@@ -8,7 +8,7 @@ After running the onboarding suite, your project will have:
 
 ```
 your-project/
-├── .cursor/
+├── .cursor/onboarding-docs/
 │   ├── CURSOR-ONBOARDING.md         # Master documentation
 │   ├── PROJECT_MAP.txt              # File tree
 │   ├── ARCHITECTURE.md              # Architecture docs
@@ -33,22 +33,22 @@ your-project/
 
 ```bash
 # Session 1: Initialize
-/01-initialize
+/onboarding/initialize
 
 # Session 2: Discover endpoints
-/02-analyze-core-and-endpoints
+/onboarding/analyze-core-and-endpoints
 
 # Session 3-6: Parallel analysis (run simultaneously)
-/03-analyze-endpoint-flows
-/04-analyze-architecture
-/05-analyze-config-and-testing
-/06-analyze-integrations
-/07-analyze-domain-and-performance
+/onboarding/analyze-endpoint-flows
+/onboarding/analyze-architecture
+/onboarding/analyze-config-and-testing
+/onboarding/analyze-integrations
+/onboarding/analyze-domain-and-performance
 
 # Session 7: Optional steps
-/08-generate-quick-reference
-/09-analyze-code-structure
-/10-assess-production-readiness
+/onboarding/generate-quick-reference
+/onboarding/analyze-code-structure
+/onboarding/assess-production-readiness
 ```
 
 ## Example CURSOR-ONBOARDING.md Structure
@@ -114,8 +114,8 @@ UsersController.GetAll() in Controllers/UsersController.cs
 
 ## Tips
 
-- Review `.cursor/CURSOR-ONBOARDING.md` to see overall progress
+- Review `.cursor/onboarding-docs/CURSOR-ONBOARDING.md` to see overall progress
 - Check individual endpoint docs for detailed flow information
-- Use quick reference for fast lookups after running step 08
+- Use quick reference for fast lookups after running generate-quick-reference
 - Review production readiness assessment for deployment planning
 

@@ -6,7 +6,7 @@ $ScriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
 $RepoRoot = Split-Path -Parent $ScriptDir
 
 # Target directory
-$TargetDir = Join-Path $env:USERPROFILE ".cursor\commands"
+$TargetDir = Join-Path $env:USERPROFILE ".cursor\commands\onboarding"
 
 Write-Host "Installing Cursor IDE Onboarding Commands..." -ForegroundColor Yellow
 Write-Host ""
@@ -17,18 +17,18 @@ if (-not (Test-Path $TargetDir)) {
     New-Item -ItemType Directory -Path $TargetDir -Force | Out-Null
 }
 
-# List of files to copy (from new structure)
+# List of files to copy
 $Files = @(
-    "commands\required\01-initialize.md",
-    "commands\required\02-analyze-core-and-endpoints.md",
-    "commands\required\03-analyze-endpoint-flows.md",
-    "commands\analysis\04-analyze-architecture.md",
-    "commands\analysis\05-analyze-config-and-testing.md",
-    "commands\analysis\06-analyze-integrations.md",
-    "commands\analysis\07-analyze-domain-and-performance.md",
-    "commands\optional\08-generate-quick-reference.md",
-    "commands\optional\09-analyze-code-structure.md",
-    "commands\optional\10-assess-production-readiness.md"
+    "commands\initialize\initialize.md",
+    "commands\discovery\analyze-core-and-endpoints.md",
+    "commands\discovery\analyze-endpoint-flows.md",
+    "commands\analysis\analyze-architecture.md",
+    "commands\analysis\analyze-config-and-testing.md",
+    "commands\analysis\analyze-integrations.md",
+    "commands\analysis\analyze-domain-and-performance.md",
+    "commands\advanced\generate-quick-reference.md",
+    "commands\advanced\analyze-code-structure.md",
+    "commands\advanced\assess-production-readiness.md"
 )
 
 # Copy each file
@@ -74,7 +74,7 @@ Write-Host ""
 Write-Host "Next steps:" -ForegroundColor Yellow
 Write-Host "1. Restart Cursor IDE if it's currently running"
 Write-Host "2. Open a project workspace"
-Write-Host "3. Start a new chat and type: /01-initialize (REQUIRED - must run first)"
-Write-Host "4. Then run any step: /02-analyze-core-and-endpoints, /03-analyze-endpoint-flows, etc."
+Write-Host "3. Start a new chat and type: /onboarding/initialize (REQUIRED - must run first)"
+Write-Host "4. Then run any step: /onboarding/analyze-core-and-endpoints, /onboarding/analyze-endpoint-flows, etc."
 Write-Host ""
 Write-Host "See README.md or QUICK_START.md for detailed usage instructions."

@@ -10,7 +10,7 @@ Analyze the project's architecture, design patterns, data models, database schem
 
 **CRITICAL - Parallel Execution & File Writes:**
 * All file writes MUST be written directly to disk using file write tools (not staged/suggested edits).
-* When updating `.cursor/CURSOR-ONBOARDING.md`, ALWAYS re-read the file first to get the latest state from any parallel sessions.
+* When updating `.cursor/onboarding-docs/CURSOR-ONBOARDING.md`, ALWAYS re-read the file first to get the latest state from any parallel sessions.
 * If changes are staged and not applied, other parallel sessions will not see them and may overwrite work.
 * This step marks itself as `[P]` (in progress) at the start to prevent duplicate execution.
 
@@ -19,19 +19,19 @@ EXECUTION PLAN:
 ## PART A: Architecture & Design Patterns
 
 0.  **Mark Command as In Progress [P]:**
-    * Check if `.cursor/CURSOR-ONBOARDING.md` exists.
+    * Check if `.cursor/onboarding-docs/CURSOR-ONBOARDING.md` exists.
     * **If it exists:** 
         * Read it to get the current Step Completion Status.
         * Update the Step Completion Status section to mark "Step 4 - Architecture, Data Models & Security" as `[P]` (in progress).
-        * Write the updated content back to `.cursor/CURSOR-ONBOARDING.md`.
-    * **If it doesn't exist:** Report error and stop. User must run `/01-initialize` first.
+        * Write the updated content back to `.cursor/onboarding-docs/CURSOR-ONBOARDING.md`.
+    * **If it doesn't exist:** Report error and stop. User must run `/onboarding/initialize` first.
 
 1.  **Check for Initialization:**
-    * Check if `.cursor/CURSOR-ONBOARDING.md` exists.
-    * **If file doesn't exist:** Report error and stop. User must run `/initialize-onboarding` first.
+    * Check if `.cursor/onboarding-docs/CURSOR-ONBOARDING.md` exists.
+    * **If file doesn't exist:** Report error and stop. User must run `/onboarding/initialize` first.
 
 2.  **Read Master File:**
-    * Read `.cursor/CURSOR-ONBOARDING.md`.
+    * Read `.cursor/onboarding-docs/CURSOR-ONBOARDING.md`.
     * Review the stack analysis and key project files sections to understand the project structure (if available).
     * **Note:** If stack analysis is not yet available, proceed with analysis - this step can discover the stack independently.
 
@@ -240,7 +240,7 @@ EXECUTION PLAN:
 ## PART D: Generate Documentation
 
 18. **Generate Architecture Documentation:**
-    * Create `.cursor/ARCHITECTURE.md` with the following structure:
+    * Create `.cursor/onboarding-docs/ARCHITECTURE.md` with the following structure:
 
       ```markdown
       # Architecture Overview
@@ -284,7 +284,7 @@ EXECUTION PLAN:
       ```
 
 19. **Generate Data Models Documentation:**
-    * Create `.cursor/DATA_MODELS.md` with the following structure:
+    * Create `.cursor/onboarding-docs/DATA_MODELS.md` with the following structure:
 
       ```markdown
       # Data Models & Database Schema
@@ -351,7 +351,7 @@ EXECUTION PLAN:
       ```
 
 20. **Generate Security Documentation:**
-    * Create `.cursor/SECURITY.md` with the following structure:
+    * Create `.cursor/onboarding-docs/SECURITY.md` with the following structure:
 
       ```markdown
       # Security Documentation
@@ -414,12 +414,12 @@ EXECUTION PLAN:
       ```
 
 21. **Update Master File (Parallel-Safe):**
-    * Read `.cursor/CURSOR-ONBOARDING.md` again (to get the latest state from any parallel sessions).
+    * Read `.cursor/onboarding-docs/CURSOR-ONBOARDING.md` again (to get the latest state from any parallel sessions).
     * **Update only if section is empty or marked as placeholder** - do not overwrite existing content from parallel sessions.
     * Find the `## Architecture` section and update with:
       ```markdown
       ## Architecture
-      See [ARCHITECTURE.md](.cursor/ARCHITECTURE.md) for detailed architecture documentation.
+      See [ARCHITECTURE.md](.cursor/onboarding-docs/ARCHITECTURE.md) for detailed architecture documentation.
       
       **Architectural Pattern:** [Brief description]
       **Key Design Patterns:** [List main patterns]
@@ -428,7 +428,7 @@ EXECUTION PLAN:
     * Find the `## Data Models` section and replace with:
       ```markdown
       ## Data Models
-      See [DATA_MODELS.md](.cursor/DATA_MODELS.md) for detailed data model documentation.
+      See [DATA_MODELS.md](.cursor/onboarding-docs/DATA_MODELS.md) for detailed data model documentation.
       
       **Total Entities:** [Number]
       **Key Entities:** [List main entities]
@@ -437,7 +437,7 @@ EXECUTION PLAN:
     * Find the `## Security` section and update with:
       ```markdown
       ## Security
-      See [SECURITY.md](.cursor/SECURITY.md) for detailed security documentation.
+      See [SECURITY.md](.cursor/onboarding-docs/SECURITY.md) for detailed security documentation.
       
       **Authentication:** [Brief description: JWT, OAuth, Session, etc.]
       **Authorization:** [Brief description: RBAC, Policy-based, etc.]
@@ -445,7 +445,7 @@ EXECUTION PLAN:
       **Public Endpoints:** [Count]
       **Protected Endpoints:** [Count]
       ```
-    * Write the updated content to `.cursor/CURSOR-ONBOARDING.md`, preserving all other sections and content from parallel sessions.
+    * Write the updated content to `.cursor/onboarding-docs/CURSOR-ONBOARDING.md`, preserving all other sections and content from parallel sessions.
 
 22. **Progress Report:**
     * Report completion status:
@@ -458,16 +458,16 @@ EXECUTION PLAN:
       - Number of roles identified
 
 23. **Update Step Completion Status:**
-    * Read `.cursor/CURSOR-ONBOARDING.md` again to get the latest state.
+    * Read `.cursor/onboarding-docs/CURSOR-ONBOARDING.md` again to get the latest state.
     * **Update the Step Completion Status section** to mark "Step 4 - Architecture, Data Models & Security" as `[x]` (complete).
     * If the Step Completion Status section doesn't exist, add it with Step 4 marked as complete.
-    * Write the updated content back to `.cursor/CURSOR-ONBOARDING.md`.
+    * Write the updated content back to `.cursor/onboarding-docs/CURSOR-ONBOARDING.md`.
 
 24. **Completion:**
     * Tell the user that Step 4 is complete.
     * **Note:** Other steps can now be run independently or in parallel:
-      - `/05-analyze-config-and-testing` - Analyze configuration & testing (can run in parallel)
-      - `/06-analyze-integrations` - Analyze integrations & error handling (can run in parallel)
-      - `/07-analyze-domain-and-performance` - Analyze domain, API contracts & performance (can run in parallel)
+      - `/onboarding/analyze-config-and-testing` - Analyze configuration & testing (can run in parallel)
+      - `/onboarding/analyze-integrations` - Analyze integrations & error handling (can run in parallel)
+      - `/onboarding/analyze-domain-and-performance` - Analyze domain, API contracts & performance (can run in parallel)
 
 **Proceed with all steps above (Parts A, B, C, and D).**

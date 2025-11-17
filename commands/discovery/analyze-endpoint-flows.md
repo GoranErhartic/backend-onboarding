@@ -11,7 +11,7 @@ This prompt is parallel-safe and can be run multiple times or in parallel sessio
 
 **CRITICAL - Parallel Execution & File Writes:**
 * All file writes MUST be written directly to disk using file write tools (not staged/suggested edits).
-* When updating `.cursor/CURSOR-ONBOARDING.md`, ALWAYS re-read the file first to get the latest state from any parallel sessions.
+* When updating `.cursor/onboarding-docs/CURSOR-ONBOARDING.md`, ALWAYS re-read the file first to get the latest state from any parallel sessions.
 * If changes are staged and not applied, other parallel sessions will not see them and may overwrite work.
 * Tasks are claimed by marking them as `[P]` (in progress) before processing.
 
@@ -39,11 +39,11 @@ EXECUTION PLAN:
 * This list will be used only at the end to report what was accomplished.
 
 1.  **Check for Initialization:**
-    * Check if `.cursor/CURSOR-ONBOARDING.md` exists.
-    * **If file doesn't exist:** Report error and stop. User must run `/01-initialize` first.
+    * Check if `.cursor/onboarding-docs/CURSOR-ONBOARDING.md` exists.
+    * **If file doesn't exist:** Report error and stop. User must run `/onboarding/initialize` first.
 
 2.  **Check for Endpoint Checklist:**
-    * Read `.cursor/CURSOR-ONBOARDING.md`.
+    * Read `.cursor/onboarding-docs/CURSOR-ONBOARDING.md`.
     * Find the `## Checklist: Endpoint Flow Investigation` section.
     * **If checklist doesn't exist or is empty:**
         * Check if `## Application Endpoints` section exists and has endpoints listed.
@@ -69,10 +69,10 @@ EXECUTION PLAN:
             * Sanitize the path: Replace `/` with `_`, `{` with `_`, `}` with `_`, `:` with `_`, remove any special characters.
             * Format: `CURSOR_[METHOD]_[sanitized_path].md`
             * Example: `PUT /accounts/{accountId:guid}/Subscriptions/{subscriptionId:guid}/validity` → `CURSOR_PUT_accounts_accountId_guid_Subscriptions_subscriptionId_guid_validity.md`
-        * Use `glob_file_search` or `list_dir` to check if the document file exists in `.cursor/` directory.
+        * Use `glob_file_search` or `list_dir` to check if the document file exists in `.cursor/onboarding-docs/` directory.
         * **If `[P]` task has a document file:**
             * This means the task was completed but not marked as `[x]` (likely due to agent crash/interruption).
-            * **Recover it:** Re-write `.cursor/CURSOR-ONBOARDING.md`, changing that `[P]` line to `[x]`.
+            * **Recover it:** Re-write `.cursor/onboarding-docs/CURSOR-ONBOARDING.md`, changing that `[P]` line to `[x]`.
             * Extract the endpoint info (METHOD and path) and add to `session_completed_endpoints` with note "(recovered)".
             * Report briefly: "Recovered completed task: [METHOD] [path]"
             * **Continue to step 1** (loop back) to check for more tasks.
@@ -81,7 +81,7 @@ EXECUTION PLAN:
             * **If there are `[ ]` tasks available:** Leave `[P]` tasks alone (they may still be in progress by another session).
             * **If there are NO `[ ]` tasks but `[P]` tasks exist:** These are stuck - reclaim the first one by changing `[P]` to `[ ]`, then proceed to claim it normally.
     
-    * **After recovery, re-read `.cursor/CURSOR-ONBOARDING.md`** to get updated state.
+    * **After recovery, re-read `.cursor/onboarding-docs/CURSOR-ONBOARDING.md`** to get updated state.
     * Re-collect all tasks marked `[ ]` (pending, not claimed).
     * Re-count how many `[ ]` tasks remain.
     
@@ -92,10 +92,10 @@ EXECUTION PLAN:
             * **Generate Final Summary Report:**
                 * Report "All endpoint flows have been analyzed. Onboarding complete!"
                 * **Update Step Completion Status:**
-                    * Read `.cursor/CURSOR-ONBOARDING.md` again to get the latest state.
+                    * Read `.cursor/onboarding-docs/CURSOR-ONBOARDING.md` again to get the latest state.
                     * **Update the Step Completion Status section** to mark "Step 3 - Document Endpoint Flows" as `[x]` (complete).
                     * If the Step Completion Status section doesn't exist, add it with Step 3 marked as complete.
-                    * Write the updated content back to `.cursor/CURSOR-ONBOARDING.md`.
+                    * Write the updated content back to `.cursor/onboarding-docs/CURSOR-ONBOARDING.md`.
                 * **If `session_completed_endpoints` is not empty:**
                     * Report: "Endpoints completed in this session:"
                     * List each endpoint in `session_completed_endpoints` with format:
@@ -109,7 +109,7 @@ EXECUTION PLAN:
     * **If tasks found (count > 0):**
         * **Select a random task** from the list of `[ ]` tasks (do NOT always pick the first one).
         * **Rationale:** Random selection distributes work across parallel sessions, reducing contention when multiple sessions run simultaneously.
-        * **"Claim" it immediately:** Read `.cursor/CURSOR-ONBOARDING.md` again, find the exact line for the selected task, and re-write the file changing ONLY that one line from `[ ]` to `[P]`.
+        * **"Claim" it immediately:** Read `.cursor/onboarding-docs/CURSOR-ONBOARDING.md` again, find the exact line for the selected task, and re-write the file changing ONLY that one line from `[ ]` to `[P]`.
         * **This atomic claim operation prevents race conditions in parallel execution.**
         * Note the claimed endpoint for analysis (e.g., "GET /api/users").
 
@@ -150,7 +150,7 @@ EXECUTION PLAN:
           - Configuration used
 
 5.  **Generate Individual Flow Document:**
-    * Create a *separate* Markdown file in the `.cursor/` directory.
+    * Create a *separate* Markdown file in the `.cursor/onboarding-docs/` directory.
     * **File Naming Convention:**
       - Sanitize the endpoint path: Replace `/` with `_`, `:` with `_`, `?` with `_`, remove leading/trailing slashes
       - Format: `CURSOR_[METHOD]_[sanitized_path].md`
@@ -218,7 +218,7 @@ EXECUTION PLAN:
     * Write all findings from Step 4 into this file.
 
 6.  **Mark Task as Complete:**
-    * Read `.cursor/CURSOR-ONBOARDING.md` again (to get the latest state).
+    * Read `.cursor/onboarding-docs/CURSOR-ONBOARDING.md` again (to get the latest state).
     * Find the line for your claimed task (should be marked `[P]`).
     * **If the line is still `[P]`:** 
         * Re-write the file, changing that line from `[P]` to `[x]`.
@@ -232,7 +232,7 @@ EXECUTION PLAN:
 
 7.  **Error Handling:**
     * **If analysis fails** (e.g., endpoint not found, code unreadable):
-        * Read `.cursor/CURSOR-ONBOARDING.md` again.
+        * Read `.cursor/onboarding-docs/CURSOR-ONBOARDING.md` again.
         * Find the `[P]` task line.
         * Change it to `[E]` and add a note: `* [E] [METHOD] [path] - [Error reason]`
         * Create a minimal document file noting the error: `CURSOR_[METHOD]_[sanitized_path].md` with content explaining the failure.
@@ -245,7 +245,7 @@ EXECUTION PLAN:
     * **If context window is running low during analysis:**
         * Complete the current task (steps 2-4).
         * Report completion.
-        * **Instruct the user:** "Context window is running low. Please open a new session in a new tab and run `/03-analyze-endpoint-flows` again to continue analyzing remaining endpoints."
+        * **Instruct the user:** "Context window is running low. Please open a new session in a new tab and run `/onboarding/analyze-endpoint-flows` again to continue analyzing remaining endpoints."
         * Exit the loop (user will restart manually).
 
 **MANDATORY LOOP INSTRUCTIONS - READ CAREFULLY:**

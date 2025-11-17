@@ -10,29 +10,29 @@ Generate a comprehensive quick reference index optimized for AI agent consumptio
 
 **CRITICAL - Parallel Execution & File Writes:**
 * All file writes MUST be written directly to disk using file write tools (not staged/suggested edits).
-* When updating `.cursor/CURSOR-ONBOARDING.md`, ALWAYS re-read the file first to get the latest state from any parallel sessions.
+* When updating `.cursor/onboarding-docs/CURSOR-ONBOARDING.md`, ALWAYS re-read the file first to get the latest state from any parallel sessions.
 
 EXECUTION PLAN:
 
 0.  **Check for Initialization:**
-    * Check if `.cursor/CURSOR-ONBOARDING.md` exists.
-    * **If file doesn't exist:** Report error and stop. User must run `/01-initialize` first.
+    * Check if `.cursor/onboarding-docs/CURSOR-ONBOARDING.md` exists.
+    * **If file doesn't exist:** Report error and stop. User must run `/onboarding/initialize` first.
 
 1.  **Read All Documentation Files:**
-    * Read `.cursor/CURSOR-ONBOARDING.md` to understand what has been analyzed.
+    * Read `.cursor/onboarding-docs/CURSOR-ONBOARDING.md` to understand what has been analyzed.
     * Read all available documentation files:
-      - `.cursor/ARCHITECTURE.md` (if exists)
-      - `.cursor/DATA_MODELS.md` (if exists)
-      - `.cursor/SECURITY.md` (if exists)
-      - `.cursor/CONFIGURATION.md` (if exists)
-      - `.cursor/TESTING.md` (if exists)
-      - `.cursor/INTEGRATIONS.md` (if exists)
-      - `.cursor/ERROR_HANDLING.md` (if exists)
-      - `.cursor/DOMAIN.md` (if exists)
-      - `.cursor/API_CONTRACTS.md` (if exists)
-      - `.cursor/PERFORMANCE.md` (if exists)
-      - `.cursor/PRODUCTION_READINESS.md` (if exists)
-    * Use `glob_file_search` to find all endpoint documentation files: `CURSOR_*.md` in `.cursor/` directory.
+      - `.cursor/onboarding-docs/ARCHITECTURE.md` (if exists)
+      - `.cursor/onboarding-docs/DATA_MODELS.md` (if exists)
+      - `.cursor/onboarding-docs/SECURITY.md` (if exists)
+      - `.cursor/onboarding-docs/CONFIGURATION.md` (if exists)
+      - `.cursor/onboarding-docs/TESTING.md` (if exists)
+      - `.cursor/onboarding-docs/INTEGRATIONS.md` (if exists)
+      - `.cursor/onboarding-docs/ERROR_HANDLING.md` (if exists)
+      - `.cursor/onboarding-docs/DOMAIN.md` (if exists)
+      - `.cursor/onboarding-docs/API_CONTRACTS.md` (if exists)
+      - `.cursor/onboarding-docs/PERFORMANCE.md` (if exists)
+      - `.cursor/onboarding-docs/PRODUCTION_READINESS.md` (if exists)
+    * Use `glob_file_search` to find all endpoint documentation files: `CURSOR_*.md` in `.cursor/onboarding-docs/` directory.
 
 2.  **Extract Key Information:**
     * From `CURSOR-ONBOARDING.md`:
@@ -65,7 +65,7 @@ EXECUTION PLAN:
       - Business rules
 
 3.  **Generate Quick Reference Index:**
-    * Create `.cursor/QUICK_REFERENCE.md` with the following structure:
+    * Create `.cursor/onboarding-docs/QUICK_REFERENCE.md` with the following structure:
 
       ```markdown
       # Quick Reference Index
@@ -200,18 +200,18 @@ EXECUTION PLAN:
       
       ## Documentation Files Reference
       
-      - **Architecture:** `.cursor/ARCHITECTURE.md`
-      - **Data Models:** `.cursor/DATA_MODELS.md`
-      - **Security:** `.cursor/SECURITY.md`
-      - **Configuration:** `.cursor/CONFIGURATION.md`
-      - **Testing:** `.cursor/TESTING.md`
-      - **Integrations:** `.cursor/INTEGRATIONS.md`
-      - **Error Handling:** `.cursor/ERROR_HANDLING.md`
-      - **Domain:** `.cursor/DOMAIN.md`
-      - **API Contracts:** `.cursor/API_CONTRACTS.md`
-      - **Performance:** `.cursor/PERFORMANCE.md`
-      - **Production Readiness:** `.cursor/PRODUCTION_READINESS.md`
-      - **Endpoint Flows:** `.cursor/CURSOR_*.md` (individual endpoint docs)
+      - **Architecture:** `.cursor/onboarding-docs/ARCHITECTURE.md`
+      - **Data Models:** `.cursor/onboarding-docs/DATA_MODELS.md`
+      - **Security:** `.cursor/onboarding-docs/SECURITY.md`
+      - **Configuration:** `.cursor/onboarding-docs/CONFIGURATION.md`
+      - **Testing:** `.cursor/onboarding-docs/TESTING.md`
+      - **Integrations:** `.cursor/onboarding-docs/INTEGRATIONS.md`
+      - **Error Handling:** `.cursor/onboarding-docs/ERROR_HANDLING.md`
+      - **Domain:** `.cursor/onboarding-docs/DOMAIN.md`
+      - **API Contracts:** `.cursor/onboarding-docs/API_CONTRACTS.md`
+      - **Performance:** `.cursor/onboarding-docs/PERFORMANCE.md`
+      - **Production Readiness:** `.cursor/onboarding-docs/PRODUCTION_READINESS.md`
+      - **Endpoint Flows:** `.cursor/onboarding-docs/CURSOR_*.md` (individual endpoint docs)
       
       ## Metadata Index (JSON)
       
@@ -245,7 +245,7 @@ EXECUTION PLAN:
       ```
 
 4.  **Generate AI-Optimized Metadata File:**
-    * Create `.cursor/REFERENCE_METADATA.json` with structured metadata:
+    * Create `.cursor/onboarding-docs/REFERENCE_METADATA.json` with structured metadata:
       - Endpoints with tags, handlers, dependencies
       - Entities with relationships
       - Services with responsibilities
@@ -253,14 +253,14 @@ EXECUTION PLAN:
       - Cross-references between components
 
 5.  **Update Master File:**
-    * Read `.cursor/CURSOR-ONBOARDING.md` again.
+    * Read `.cursor/onboarding-docs/CURSOR-ONBOARDING.md` again.
     * Add a section:
       ```markdown
       ## Quick Reference
-      See [QUICK_REFERENCE.md](.cursor/QUICK_REFERENCE.md) for AI-optimized quick lookup index.
-      See [REFERENCE_METADATA.json](.cursor/REFERENCE_METADATA.json) for structured metadata.
+      See [QUICK_REFERENCE.md](.cursor/onboarding-docs/QUICK_REFERENCE.md) for AI-optimized quick lookup index.
+      See [REFERENCE_METADATA.json](.cursor/onboarding-docs/REFERENCE_METADATA.json) for structured metadata.
       ```
-    * Write the updated content to `.cursor/CURSOR-ONBOARDING.md`.
+    * Write the updated content to `.cursor/onboarding-docs/CURSOR-ONBOARDING.md`.
 
 6.  **Completion:**
     * Report that quick reference has been generated.

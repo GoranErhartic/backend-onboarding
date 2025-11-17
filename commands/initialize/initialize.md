@@ -1,5 +1,5 @@
 ---
-title: "01 - Initialize Onboarding (REQUIRED)"
+title: "Initialize Onboarding (REQUIRED)"
 description: "Initialize onboarding structure and perform project mapping - REQUIRED: run this first to set up groundwork"
 author: "Goran Erhartic"
 ---
@@ -9,31 +9,31 @@ Initialize the onboarding structure and perform initial project mapping. **This 
 
 **CRITICAL - Parallel Execution & File Writes:**
 * All file writes MUST be written directly to disk using file write tools (not staged/suggested edits).
-* When updating `.cursor/CURSOR-ONBOARDING.md`, ALWAYS re-read the file first to get the latest state from any parallel sessions.
+* When updating `.cursor/onboarding-docs/CURSOR-ONBOARDING.md`, ALWAYS re-read the file first to get the latest state from any parallel sessions.
 * If changes are staged and not applied, other parallel sessions will not see them and may overwrite work.
 * Each step marks itself as `[P]` (in progress) at the start to prevent duplicate execution.
 
 EXECUTION PLAN:
 
 0.  **Mark Command as In Progress [P]:**
-    * Check if `.cursor/CURSOR-ONBOARDING.md` exists.
+    * Check if `.cursor/onboarding-docs/CURSOR-ONBOARDING.md` exists.
     * **If it exists:** 
         * Read it to get the current Step Completion Status.
         * Update the Step Completion Status section to mark "Initialize Onboarding" as `[P]` (in progress).
-        * Write the updated content back to `.cursor/CURSOR-ONBOARDING.md`.
+        * Write the updated content back to `.cursor/onboarding-docs/CURSOR-ONBOARDING.md`.
     * **If it doesn't exist:** This will be created in step 6 with `[P]` status.
 
 1.  **Initialize Directory Structure:**
-    * Check if `.cursor` directory exists. If not, create it.
+    * Check if `.cursor/onboarding-docs` directory exists. If not, create it.
     * This directory will hold all onboarding documentation.
 
 2.  **Map File Tree:**
-    * **If `.cursor/PROJECT_MAP.txt` already exists and is not empty:** Read it first to check if mapping is already complete. If it appears complete, you may skip this step or update it.
+    * **If `.cursor/onboarding-docs/PROJECT_MAP.txt` already exists and is not empty:** Read it first to check if mapping is already complete. If it appears complete, you may skip this step or update it.
     * Use `list_dir` tool recursively to explore the project structure.
     * Start from the workspace root and explore up to 5 levels deep.
     * Use `glob_file_search` to find files while excluding common directories:
-      - Ignore: `.git/`, `node_modules/`, `.venv/`, `venv/`, `dist/`, `build/`, `.cursor/`, `.next/`, `__pycache__/`, `bin/`, `obj/`
-    * Build a structured file tree representation and save it to `.cursor/PROJECT_MAP.txt`.
+      - Ignore: `.git/`, `node_modules/`, `.venv/`, `venv/`, `dist/`, `build/`, `.cursor/onboarding-docs/`, `.next/`, `__pycache__/`, `bin/`, `obj/`
+    * Build a structured file tree representation and save it to `.cursor/onboarding-docs/PROJECT_MAP.txt`.
     * Format: Use indentation or tree structure (e.g., `├──` or `  `) to show hierarchy.
     * **Note:** This can be run multiple times safely - it will update the mapping.
 
@@ -78,7 +78,7 @@ EXECUTION PLAN:
     * List 3-8 files or directories to scan for endpoints.
 
 6.  **Create or Update CURSOR-ONBOARDING.md:**
-    * Check if `.cursor/CURSOR-ONBOARDING.md` exists.
+    * Check if `.cursor/onboarding-docs/CURSOR-ONBOARDING.md` exists.
     * **If it exists:** 
         * Read it first to preserve existing content. 
         * **Update the Step Completion Status section** - ensure "Initialize Onboarding" is marked as `[P]` (in progress) if not already marked as `[x]` (complete).
@@ -175,15 +175,15 @@ EXECUTION PLAN:
       ```
 
 7.  **Update Step Completion Status:**
-    * Read `.cursor/CURSOR-ONBOARDING.md` again to get the latest state.
+    * Read `.cursor/onboarding-docs/CURSOR-ONBOARDING.md` again to get the latest state.
     * **Update the Step Completion Status section** to mark "Initialize Onboarding" as `[x]` (complete).
     * If the Step Completion Status section doesn't exist, add it with Initialize Onboarding marked as complete.
-    * Write the updated content back to `.cursor/CURSOR-ONBOARDING.md`.
+    * Write the updated content back to `.cursor/onboarding-docs/CURSOR-ONBOARDING.md`.
 
 8.  **Validation:**
-    * Verify that `.cursor/` directory exists.
-    * Verify that `.cursor/CURSOR-ONBOARDING.md` exists with the required structure and populated sections.
-    * Verify that `.cursor/PROJECT_MAP.txt` exists and contains the file tree mapping.
+    * Verify that `.cursor/onboarding-docs/` directory exists.
+    * Verify that `.cursor/onboarding-docs/CURSOR-ONBOARDING.md` exists with the required structure and populated sections.
+    * Verify that `.cursor/onboarding-docs/PROJECT_MAP.txt` exists and contains the file tree mapping.
     * Verify that the Step Completion Status section exists and shows Initialize Onboarding as complete.
     * Verify that at least some checklist items were added (if none found, note this as a warning).
     * Report the number of files mapped, stack identified, core files identified, and endpoint discovery locations identified.
@@ -195,17 +195,17 @@ EXECUTION PLAN:
       - Number of core files identified for analysis
       - Number of endpoint discovery locations identified
     * Report that initialization and mapping is complete.
-    * **Read `.cursor/CURSOR-ONBOARDING.md` to check Step Completion Status.**
+    * **Read `.cursor/onboarding-docs/CURSOR-ONBOARDING.md` to check Step Completion Status.**
     * **Report which steps are still pending (not run):**
       - Extract all steps from the Step Completion Status section that are marked as `[ ]` (not started).
       - Exclude any steps marked as `[P]` (currently running) from the pending list.
       - List the pending steps with their command names:
-        - If "Step 2 - Analyze Core Files & Discover Endpoints" is `[ ]`: `/02-analyze-core-and-endpoints`
-        - If "Step 3 - Document Endpoint Flows" is `[ ]`: `/03-analyze-endpoint-flows`
-        - If "Step 4 - Architecture, Data Models & Security" is `[ ]`: `/04-analyze-architecture`
-        - If "Step 5 - Configuration & Testing" is `[ ]`: `/05-analyze-config-and-testing`
-        - If "Step 6 - Integrations & Error Handling" is `[ ]`: `/06-analyze-integrations`
-        - If "Step 7 - Domain, API Contracts & Performance" is `[ ]`: `/07-analyze-domain-and-performance`
+        - If "Step 2 - Analyze Core Files & Discover Endpoints" is `[ ]`: `/onboarding/analyze-core-and-endpoints`
+        - If "Step 3 - Document Endpoint Flows" is `[ ]`: `/onboarding/analyze-endpoint-flows`
+        - If "Step 4 - Architecture, Data Models & Security" is `[ ]`: `/onboarding/analyze-architecture`
+        - If "Step 5 - Configuration & Testing" is `[ ]`: `/onboarding/analyze-config-and-testing`
+        - If "Step 6 - Integrations & Error Handling" is `[ ]`: `/onboarding/analyze-integrations`
+        - If "Step 7 - Domain, API Contracts & Performance" is `[ ]`: `/onboarding/analyze-domain-and-performance`
       - Format: "**Pending steps:** [list of command names]"
       - If all steps are complete or in progress, report: "All steps are complete or currently running."
     * Inform the user that they can now run any analysis step independently.

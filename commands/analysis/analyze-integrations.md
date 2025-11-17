@@ -10,7 +10,7 @@ Analyze external services, third-party integrations, API clients, error handling
 
 **CRITICAL - Parallel Execution & File Writes:**
 * All file writes MUST be written directly to disk using file write tools (not staged/suggested edits).
-* When updating `.cursor/CURSOR-ONBOARDING.md`, ALWAYS re-read the file first to get the latest state from any parallel sessions.
+* When updating `.cursor/onboarding-docs/CURSOR-ONBOARDING.md`, ALWAYS re-read the file first to get the latest state from any parallel sessions.
 * If changes are staged and not applied, other parallel sessions will not see them and may overwrite work.
 * This step marks itself as `[P]` (in progress) at the start to prevent duplicate execution.
 
@@ -19,19 +19,19 @@ EXECUTION PLAN:
 ## PART A: External Dependencies & Integrations
 
 0.  **Mark Command as In Progress [P]:**
-    * Check if `.cursor/CURSOR-ONBOARDING.md` exists.
+    * Check if `.cursor/onboarding-docs/CURSOR-ONBOARDING.md` exists.
     * **If it exists:** 
         * Read it to get the current Step Completion Status.
         * Update the Step Completion Status section to mark "Step 6 - Integrations & Error Handling" as `[P]` (in progress).
-        * Write the updated content back to `.cursor/CURSOR-ONBOARDING.md`.
-    * **If it doesn't exist:** Report error and stop. User must run `/01-initialize` first.
+        * Write the updated content back to `.cursor/onboarding-docs/CURSOR-ONBOARDING.md`.
+    * **If it doesn't exist:** Report error and stop. User must run `/onboarding/initialize` first.
 
 1.  **Check for Initialization:**
-    * Check if `.cursor/CURSOR-ONBOARDING.md` exists.
-    * **If file doesn't exist:** Report error and stop. User must run `/initialize-onboarding` first.
+    * Check if `.cursor/onboarding-docs/CURSOR-ONBOARDING.md` exists.
+    * **If file doesn't exist:** Report error and stop. User must run `/onboarding/initialize` first.
 
 2.  **Read Master File:**
-    * Read `.cursor/CURSOR-ONBOARDING.md`.
+    * Read `.cursor/onboarding-docs/CURSOR-ONBOARDING.md`.
     * Review the stack analysis and endpoint flows from Step 3 to identify external integrations (if available).
 
 3.  **Identify External API Integrations:**
@@ -212,7 +212,7 @@ EXECUTION PLAN:
 ## PART C: Generate Documentation
 
 18. **Generate Integrations Documentation:**
-    * Create `.cursor/INTEGRATIONS.md` with the following structure:
+    * Create `.cursor/onboarding-docs/INTEGRATIONS.md` with the following structure:
 
       ```markdown
       # External Dependencies & Integrations
@@ -283,7 +283,7 @@ EXECUTION PLAN:
       ```
 
 19. **Generate Error Handling & Logging Documentation:**
-    * Create `.cursor/ERROR_HANDLING.md` with the following structure:
+    * Create `.cursor/onboarding-docs/ERROR_HANDLING.md` with the following structure:
 
       ```markdown
       # Error Handling & Logging
@@ -347,12 +347,12 @@ EXECUTION PLAN:
       ```
 
 20. **Update Master File (Parallel-Safe):**
-    * Read `.cursor/CURSOR-ONBOARDING.md` again (to get the latest state from any parallel sessions).
+    * Read `.cursor/onboarding-docs/CURSOR-ONBOARDING.md` again (to get the latest state from any parallel sessions).
     * **Update only if section is empty or marked as placeholder** - do not overwrite existing content from parallel sessions.
     * Find the `## Integrations` section and update with:
       ```markdown
       ## Integrations
-      See [INTEGRATIONS.md](.cursor/INTEGRATIONS.md) for detailed integration documentation.
+      See [INTEGRATIONS.md](.cursor/onboarding-docs/INTEGRATIONS.md) for detailed integration documentation.
       
       **External APIs:** [Count]
       **Third-Party Services:** [Count]
@@ -362,14 +362,14 @@ EXECUTION PLAN:
     * Find the `## Error Handling` section and replace with:
       ```markdown
       ## Error Handling
-      See [ERROR_HANDLING.md](.cursor/ERROR_HANDLING.md) for detailed error handling and logging documentation.
+      See [ERROR_HANDLING.md](.cursor/onboarding-docs/ERROR_HANDLING.md) for detailed error handling and logging documentation.
       
       **Logging Framework:** [Framework name]
       **Error Tracking:** [Service name if applicable]
       **Log Aggregation:** [Service name if applicable]
       **Structured Logging:** [Yes/No]
       ```
-    * Write the updated content to `.cursor/CURSOR-ONBOARDING.md`, preserving all other sections and content from parallel sessions.
+    * Write the updated content to `.cursor/onboarding-docs/CURSOR-ONBOARDING.md`, preserving all other sections and content from parallel sessions.
 
 21. **Progress Report:**
     * Report completion status:
@@ -382,14 +382,14 @@ EXECUTION PLAN:
       - Log aggregation service identified (if applicable)
 
 22. **Update Step Completion Status:**
-    * Read `.cursor/CURSOR-ONBOARDING.md` again to get the latest state.
+    * Read `.cursor/onboarding-docs/CURSOR-ONBOARDING.md` again to get the latest state.
     * **Update the Step Completion Status section** to mark "Step 6 - Integrations & Error Handling" as `[x]` (complete).
     * If the Step Completion Status section doesn't exist, add it with Step 6 marked as complete.
-    * Write the updated content back to `.cursor/CURSOR-ONBOARDING.md`.
+    * Write the updated content back to `.cursor/onboarding-docs/CURSOR-ONBOARDING.md`.
 
 23. **Completion:**
     * Tell the user that Step 6 is complete.
     * **Note:** Other steps can now be run independently or in parallel:
-      - `/07-analyze-domain-and-performance` - Analyze domain, API contracts & performance (can run in parallel)
+      - `/onboarding/analyze-domain-and-performance` - Analyze domain, API contracts & performance (can run in parallel)
 
 **Proceed with all steps above (Parts A, B, and C).**

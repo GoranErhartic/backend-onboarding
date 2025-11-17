@@ -12,11 +12,11 @@ The quick start guide will get you up and running in 3 simple steps.
 
 The Cursor Onboarding Suite provides a structured approach to understanding any codebase through automated analysis. It consists of:
 
-- **3 Required Steps** - Foundation analysis that must be run in order
-- **4 Analysis Steps** - Core analysis that can run in parallel
+- **1 Required First Step** - `/onboarding/initialize` must be run first to set up the foundation
+- **6 Recommended Steps** - Core analysis steps that can run in any order
 - **3 Optional Steps** - Advanced analysis for deeper insights
 
-All steps are designed to run independently and can be parallelized across multiple chat sessions for faster completion.
+**Important:** Only `/onboarding/initialize` must be run first. After that, all other steps can run independently or in parallel in any order. All steps are designed to run independently and can be parallelized across multiple chat sessions for faster completion.
 
 ## 📁 Repository Structure
 
@@ -25,27 +25,34 @@ cursor-onboarding-suite/
 ├── README.md                    # This file
 ├── QUICK_START.md              # Quick start guide
 ├── LICENSE                      # License file
+├── .cursorrules.template       # Project-specific rules template
 │
 ├── commands/                    # All command files
-│   ├── required/               # Required steps (must run in order)
-│   │   ├── 01-initialize.md
-│   │   ├── 02-analyze-core-and-endpoints.md
-│   │   └── 03-analyze-endpoint-flows.md
+│   ├── initialize/             # Required first step
+│   │   └── initialize.md
 │   │
-│   ├── analysis/               # Core analysis (can run in parallel)
-│   │   ├── 04-analyze-architecture.md
-│   │   ├── 05-analyze-config-and-testing.md
-│   │   ├── 06-analyze-integrations.md
-│   │   └── 07-analyze-domain-and-performance.md
+│   ├── discovery/              # Endpoint discovery & flow analysis
+│   │   ├── analyze-core-and-endpoints.md
+│   │   └── analyze-endpoint-flows.md
 │   │
-│   └── optional/               # Optional advanced analysis
-│       ├── 08-generate-quick-reference.md
-│       ├── 09-analyze-code-structure.md
-│       └── 10-assess-production-readiness.md
+│   ├── analysis/               # Comprehensive analysis
+│   │   ├── analyze-architecture.md
+│   │   ├── analyze-config-and-testing.md
+│   │   ├── analyze-integrations.md
+│   │   └── analyze-domain-and-performance.md
+│   │
+│   └── advanced/               # Optional advanced analysis
+│       ├── generate-quick-reference.md
+│       ├── analyze-code-structure.md
+│       └── assess-production-readiness.md
 │
 ├── scripts/                    # Installation scripts
 │   ├── install-mac.sh
 │   └── install-windows.ps1
+│
+├── rules/                      # Cursor AI rules (copy to .cursor/rules)
+│   ├── README.md
+│   └── engineering-rule.mdc
 │
 └── docs/                       # Additional documentation
     ├── EXAMPLES.md
@@ -55,17 +62,22 @@ cursor-onboarding-suite/
 ## 🎯 Execution Flow
 
 ```
-[Required Path]
-01-initialize → 02-analyze-core-and-endpoints → 03-analyze-endpoint-flows
+[Required First Step]
+initialize (MUST run first)
                 ↓
-        04-analyze-architecture (parallel)
-        05-analyze-config-and-testing (parallel)
-        06-analyze-integrations (parallel)
-        07-analyze-domain-and-performance (parallel)
-                ↓
-[Optional Path]
-08-generate-quick-reference → 09-analyze-code-structure → 10-assess-production-readiness
+[All Other Steps - Can Run in Any Order, Independently or in Parallel]
+        analyze-core-and-endpoints
+        analyze-endpoint-flows
+        analyze-architecture
+        analyze-config-and-testing
+        analyze-integrations
+        analyze-domain-and-performance
+        generate-quick-reference (optional)
+        analyze-code-structure (optional)
+        assess-production-readiness (optional)
 ```
+
+**Note:** Only `/onboarding/initialize` must be run first. After that, all other steps can run independently or in parallel in any order. The discovery and analysis steps are recommended for comprehensive analysis, while the advanced steps are optional.
 
 ## 📦 Installation
 
@@ -85,62 +97,90 @@ cd cursor-onboarding-suite
 
 ### Manual Installation
 
-Copy all `.md` files from `commands/required/`, `commands/analysis/`, and `commands/optional/` to:
+Copy all `.md` files from `commands/initialize/`, `commands/discovery/`, `commands/analysis/`, and `commands/advanced/` to:
 - **Mac/Linux**: `~/.cursor/commands/`
 - **Windows**: `%USERPROFILE%\.cursor\commands\`
 
+### Project-Specific Rules (Optional but Recommended)
+
+For best results, copy the `rules` folder to your project's `.cursor` folder:
+
+**Mac/Linux:**
+```bash
+cp -r rules /path/to/your/project/.cursor/rules
+```
+
+**Windows:**
+```powershell
+Copy-Item -Path rules -Destination .cursor\rules -Recurse
+```
+
+This configures Cursor AI to:
+- Act as a senior principal engineer
+- Take time to think through problems thoroughly
+- Focus on quality over quantity
+- Always check the `.cursor/onboarding-docs` folder for existing analysis results before starting work
+
+**Alternative:** You can also copy `.cursorrules.template` to your project root as `.cursorrules` for similar (but less comprehensive) behavior:
+
+```bash
+cp .cursorrules.template /path/to/your/project/.cursorrules
+```
+
+**Note:** These are project-specific files that should be committed to your repository so all team members benefit from the same AI behavior. See [rules/README.md](rules/README.md) for more details.
+
 ## 🎮 Usage
 
-### Required Steps (Run in Order)
+### Required First Step
 
-1. **`/01-initialize`** - Initialize onboarding structure and perform project mapping
+1. **`/onboarding/initialize`** - Initialize onboarding structure and perform project mapping
    - **MUST be run first** before any other steps
-   - Creates `.cursor/CURSOR-ONBOARDING.md` and `.cursor/PROJECT_MAP.txt`
+   - Creates `.cursor/onboarding-docs/CURSOR-ONBOARDING.md` and `.cursor/onboarding-docs/PROJECT_MAP.txt`
    - Identifies tech stack and creates analysis checklists
 
-2. **`/02-analyze-core-and-endpoints`** - Analyze core files & discover endpoints
+### Recommended Steps (Can Run in Any Order)
+
+After `/onboarding/initialize`, you can run these steps **in any order**, **independently**, or **in parallel**:
+
+2. **`/onboarding/analyze-core-and-endpoints`** - Analyze core files & discover endpoints
    - Analyzes critical project files
    - Discovers and maps all API endpoints
    - Creates endpoint flow investigation checklist
 
-3. **`/03-analyze-endpoint-flows`** - Analyze endpoint flows
+3. **`/onboarding/analyze-endpoint-flows`** - Analyze endpoint flows
    - Documents complete request/response flow for each endpoint
    - Creates individual endpoint documentation files
    - **Parallel-safe**: Can run multiple instances simultaneously
 
-### Analysis Steps (Can Run in Parallel)
-
-After step 02, run these **in parallel** in separate chat sessions:
-
-4. **`/04-analyze-architecture`** - Architecture, Data Models & Security
+4. **`/onboarding/analyze-architecture`** - Architecture, Data Models & Security
    - Architectural patterns and design patterns
    - Data models and database schema
    - Authentication and authorization
 
-5. **`/05-analyze-config-and-testing`** - Configuration & Testing
+5. **`/onboarding/analyze-config-and-testing`** - Configuration & Testing
    - Configuration management and environment variables
    - Testing strategy and test structure
 
-6. **`/06-analyze-integrations`** - Integrations & Error Handling
+6. **`/onboarding/analyze-integrations`** - Integrations & Error Handling
    - External API integrations
    - Error handling and logging
 
-7. **`/07-analyze-domain-and-performance`** - Domain, API Contracts & Performance
+7. **`/onboarding/analyze-domain-and-performance`** - Domain, API Contracts & Performance
    - Business domain and domain models
    - API contracts and validation
    - Performance optimization
 
 ### Optional Steps (Advanced)
 
-8. **`/08-generate-quick-reference`** - Generate Quick Reference
+8. **`/onboarding/generate-quick-reference`** - Generate Quick Reference
    - Creates AI-optimized quick lookup index
-   - Run after completing analysis steps
+   - Can run independently or after other steps
 
-9. **`/09-analyze-code-structure`** - Analyze Code Structure
+9. **`/onboarding/analyze-code-structure`** - Analyze Code Structure
    - Code patterns, conventions, and anti-patterns
    - Component dependencies and relationships
 
-10. **`/10-assess-production-readiness`** - Assess Production Readiness
+10. **`/onboarding/assess-production-readiness`** - Assess Production Readiness
     - Comprehensive production readiness evaluation
     - Security, monitoring, scalability assessment
 
@@ -148,31 +188,32 @@ After step 02, run these **in parallel** in separate chat sessions:
 
 ### Required Steps Output
 
-- **01-initialize**: `.cursor/CURSOR-ONBOARDING.md`, `.cursor/PROJECT_MAP.txt`
-- **02-analyze-core-and-endpoints**: Updated `CURSOR-ONBOARDING.md` with file summaries and endpoint list
-- **03-analyze-endpoint-flows**: Individual endpoint documentation files (`CURSOR_*.md`)
+- **initialize**: `.cursor/onboarding-docs/CURSOR-ONBOARDING.md`, `.cursor/onboarding-docs/PROJECT_MAP.txt`
+- **analyze-core-and-endpoints**: Updated `CURSOR-ONBOARDING.md` with file summaries and endpoint list
+- **analyze-endpoint-flows**: Individual endpoint documentation files (`CURSOR_*.md`)
 
 ### Analysis Steps Output
 
-- **04-analyze-architecture**: `.cursor/ARCHITECTURE.md`, `.cursor/DATA_MODELS.md`, `.cursor/SECURITY.md`
-- **05-analyze-config-and-testing**: `.cursor/CONFIGURATION.md`, `.cursor/TESTING.md`
-- **06-analyze-integrations**: `.cursor/INTEGRATIONS.md`, `.cursor/ERROR_HANDLING.md`
-- **07-analyze-domain-and-performance**: `.cursor/DOMAIN.md`, `.cursor/API_CONTRACTS.md`, `.cursor/PERFORMANCE.md`
+- **analyze-architecture**: `.cursor/onboarding-docs/ARCHITECTURE.md`, `.cursor/onboarding-docs/DATA_MODELS.md`, `.cursor/onboarding-docs/SECURITY.md`
+- **analyze-config-and-testing**: `.cursor/onboarding-docs/CONFIGURATION.md`, `.cursor/onboarding-docs/TESTING.md`
+- **analyze-integrations**: `.cursor/onboarding-docs/INTEGRATIONS.md`, `.cursor/onboarding-docs/ERROR_HANDLING.md`
+- **analyze-domain-and-performance**: `.cursor/onboarding-docs/DOMAIN.md`, `.cursor/onboarding-docs/API_CONTRACTS.md`, `.cursor/onboarding-docs/PERFORMANCE.md`
 
 ### Optional Steps Output
 
-- **08-generate-quick-reference**: `.cursor/QUICK_REFERENCE.md`, `.cursor/REFERENCE_METADATA.json`
-- **09-analyze-code-structure**: `.cursor/CODE_PATTERNS.md`, `.cursor/DEPENDENCY_GRAPH.md`, `.cursor/DEPENDENCY_METADATA.json`
-- **10-assess-production-readiness**: `.cursor/PRODUCTION_READINESS.md`
+- **generate-quick-reference**: `.cursor/onboarding-docs/QUICK_REFERENCE.md`, `.cursor/onboarding-docs/REFERENCE_METADATA.json`
+- **analyze-code-structure**: `.cursor/onboarding-docs/CODE_PATTERNS.md`, `.cursor/onboarding-docs/DEPENDENCY_GRAPH.md`, `.cursor/onboarding-docs/DEPENDENCY_METADATA.json`
+- **assess-production-readiness**: `.cursor/onboarding-docs/PRODUCTION_READINESS.md`
 
 ## 💡 Best Practices
 
-1. **Initialize first**: Always run `/01-initialize` first - all other steps require it
-2. **Parallel execution**: Run steps 04-07 simultaneously in different chat sessions for faster completion
-3. **Step 03**: Can be interrupted and resumed - it automatically recovers progress
-4. **Clean context**: Start a new chat for each step to avoid context window issues
-5. **Review progress**: Check `.cursor/CURSOR-ONBOARDING.md` to see what's been completed
-6. **Skip optional steps**: Only run optional steps if you need that specific analysis
+1. **Initialize first**: Always run `/onboarding/initialize` first - this is the only required step order
+2. **Run in any order**: After initialization, all other steps can run in any order, independently or in parallel
+3. **Parallel execution**: Run multiple steps simultaneously in different chat sessions for faster completion
+4. **analyze-endpoint-flows**: Can be interrupted and resumed - it automatically recovers progress
+5. **Clean context**: Start a new chat for each step to avoid context window issues
+6. **Review progress**: Check `.cursor/onboarding-docs/CURSOR-ONBOARDING.md` to see what's been completed
+7. **Skip optional steps**: Only run optional advanced steps if you need that specific analysis
 
 ## 🔧 Troubleshooting
 
@@ -182,14 +223,14 @@ After step 02, run these **in parallel** in separate chat sessions:
 - Check that filenames match exactly (including numbers and hyphens)
 
 ### Step fails with "file doesn't exist"
-- Run `/01-initialize` first to create `CURSOR-ONBOARDING.md` and `PROJECT_MAP.txt`
+- Run `/onboarding/initialize` first to create `CURSOR-ONBOARDING.md` and `PROJECT_MAP.txt`
 - Ensure you're in the correct project directory
 
-### Step 03 seems stuck
-- Step 03 processes endpoints in a loop - this is normal
+### analyze-endpoint-flows seems stuck
+- analyze-endpoint-flows processes endpoints in a loop - this is normal
 - It will continue until all endpoints are analyzed
 - You can interrupt and resume - it will recover automatically
-- Check `.cursor/CURSOR-ONBOARDING.md` to see progress
+- Check `.cursor/onboarding-docs/CURSOR-ONBOARDING.md` to see progress
 
 For more troubleshooting help, see [docs/TROUBLESHOOTING.md](docs/TROUBLESHOOTING.md).
 
@@ -202,6 +243,7 @@ This suite is specifically optimized for Cursor AI agents with:
 - **Parallel Execution**: Safe parallel execution with atomic task claiming
 - **Recovery Mechanisms**: Automatic recovery from interrupted sessions
 - **Quick Reference**: AI-optimized lookup indexes
+- **Project Rules**: `rules/` folder with engineering guidelines to configure Cursor as a senior principal engineer with quality-focused behavior (copy to `.cursor/rules/` for best results)
 
 ## 📚 Additional Documentation
 
