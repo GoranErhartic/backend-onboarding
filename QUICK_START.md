@@ -108,6 +108,7 @@ initialize (MUST run first)
 3. **analyze-endpoint-flows**: Can be interrupted and resumed - it will automatically recover progress
 4. **Skip Optional Steps**: Only run optional advanced steps if you need that specific analysis
 5. **Check Progress**: Review `.cursor/onboarding-docs/CURSOR-ONBOARDING.md` to see what's been completed
+6. **Endpoint Templates**: Before creating new endpoints, check for existing `CURSOR_{METHOD}_*.md` template files in `.cursor/onboarding-docs/` - these provide complete implementation patterns and should be used as guides
 
 ## Need Help?
 

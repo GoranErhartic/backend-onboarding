@@ -45,10 +45,13 @@ EXECUTION PLAN:
       - Handler locations
       - Dependencies
       - Tags/metadata
+      - **IMPORTANT:** List all available `CURSOR_*.md` endpoint template files for reference
     * From architecture documentation:
       - Architectural patterns
       - Design patterns
       - Layer organization
+      - **CRITICAL:** File location patterns for models, interfaces, services, repositories, controllers (needed for endpoint creation checklist)
+      - Validation patterns and frameworks used
     * From data models:
       - Entity names
       - Key relationships
@@ -56,6 +59,7 @@ EXECUTION PLAN:
       - Authentication mechanisms
       - Authorization patterns
       - Roles
+      - Ownership validation patterns (e.g., AccountOwnershipValidator)
     * From integrations:
       - External services
       - API integrations
@@ -63,8 +67,18 @@ EXECUTION PLAN:
       - Business entities
       - Use cases
       - Business rules
+    * From error handling documentation:
+      - Exception types and patterns
+      - Error response formats
+      - Status code conventions
 
 3.  **Generate Quick Reference Index:**
+    * **CRITICAL:** When generating the "Checklist for Creating New Endpoints" section:
+      - Extract actual file location patterns from `ARCHITECTURE.md` (e.g., where models, interfaces, services, repositories, controllers are located)
+      - Extract validation patterns from `ARCHITECTURE.md` and `ERROR_HANDLING.md` (e.g., validator names, validation frameworks)
+      - Replace placeholder text like `[models location pattern]` with actual project-specific paths
+      - Replace placeholder text like `[specific validators]` with actual validator names found in the codebase
+      - If patterns cannot be determined, use generic placeholders but note that they should be filled in based on project structure
     * Create `.cursor/onboarding-docs/QUICK_REFERENCE.md` with the following structure:
 
       ```markdown
@@ -82,12 +96,58 @@ EXECUTION PLAN:
       
       ## Endpoints Index
       
+      ### ⚠️ IMPORTANT: Checklist for Creating New Endpoints
+      **Before implementing a new endpoint, follow this checklist:**
+      
+      1. ✅ **Read Documentation First:**
+         - Read `CURSOR-ONBOARDING.md` for project overview
+         - Read `QUICK_REFERENCE.md` for patterns and conventions
+         - Read `API_CONTRACTS.md` for API design patterns
+      
+      2. ✅ **Find Similar Endpoint Templates:**
+         - Search for `CURSOR_{METHOD}_*.md` files matching your endpoint pattern
+         - Review the template to understand the flow and patterns
+         - Example: For PUT endpoints, check `CURSOR_PUT_*.md` files
+         - Use `glob_file_search` with pattern `CURSOR_{METHOD}_*.md` in `.cursor/onboarding-docs/`
+      
+      3. ✅ **Plan Your Implementation:**
+         - Identify which layer each component belongs to (Controller, Service, Repository)
+         - Determine validation requirements (account ownership, business rules)
+         - Plan error handling (which exceptions to throw, which status codes)
+      
+      4. ✅ **Implement Following Patterns:**
+         - [Extract from ARCHITECTURE.md: List actual file location patterns for models, interfaces, services, repositories, controllers]
+         - Example patterns (adapt based on actual project structure):
+           - Create request/response models in [models location pattern]
+           - Add service method to interface in [interfaces location pattern]
+           - Implement service method in [services location pattern]
+           - Add repository method if needed in [repositories location pattern]
+           - Add controller endpoint in [controllers location pattern]
+      
+      5. ✅ **Add Validation:**
+         - [Extract from ARCHITECTURE.md and ERROR_HANDLING.md: List validation patterns]
+         - Example patterns (adapt based on actual project):
+           - Use [specific validators] for [entity]-related endpoints
+           - Add business rule validation in service layer
+           - Use [validation framework] for complex validation rules
+      
+      6. ✅ **Document Your Endpoint:**
+         - Create `CURSOR_{METHOD}_{sanitized_path}.md` file following the template structure
+         - Document request flow, business logic, and error scenarios
+         - Include AI Reference Metadata
+      
+      **Why this matters:** Endpoint templates ensure consistency, proper error handling, and architectural alignment. They are located in `.cursor/onboarding-docs/CURSOR_*.md` files.
+      
       ### By HTTP Method
       - **GET:** [list all GET endpoints with paths]
       - **POST:** [list all POST endpoints with paths]
       - **PUT:** [list all PUT endpoints with paths]
       - **DELETE:** [list all DELETE endpoints with paths]
       - **PATCH:** [list all PATCH endpoints with paths]
+      
+      ### Available Endpoint Templates
+      [List all available CURSOR_*.md endpoint template files with their paths and methods]
+      - Example: `CURSOR_PUT_Accounts_accountId_Subscriptions_subscriptionId_quantity.md` - PUT endpoint template
       
       ### By Feature/Module
       [Group endpoints by feature/module if identifiable]
@@ -211,7 +271,7 @@ EXECUTION PLAN:
       - **API Contracts:** `.cursor/onboarding-docs/API_CONTRACTS.md`
       - **Performance:** `.cursor/onboarding-docs/PERFORMANCE.md`
       - **Production Readiness:** `.cursor/onboarding-docs/PRODUCTION_READINESS.md`
-      - **Endpoint Flows:** `.cursor/onboarding-docs/CURSOR_*.md` (individual endpoint docs)
+      - **Endpoint Templates:** `.cursor/onboarding-docs/CURSOR_*.md` (individual endpoint docs - **USE AS TEMPLATES FOR NEW ENDPOINTS**)
       
       ## Metadata Index (JSON)
       
