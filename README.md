@@ -22,12 +22,12 @@ The Cursor Onboarding Suite provides a structured approach to understanding any 
 
 ```
 cursor-onboarding-suite/
-├── README.md                    # This file
+├── README.md                   # This file
 ├── QUICK_START.md              # Quick start guide
-├── LICENSE                      # License file
+├── LICENSE                     # License file
 ├── .cursorrules.template       # Project-specific rules template
 │
-├── commands/                    # All command files
+├── commands/                   # All command files
 │   ├── initialize.md           # First step (Required)
 │   │
 │   ├── discovery/              # Endpoint discovery & flow analysis
@@ -119,12 +119,6 @@ This configures Cursor AI to:
 - Take time to think through problems thoroughly
 - Focus on quality over quantity
 - Always check the `.cursor/onboarding-docs` folder for existing analysis results before starting work
-
-**Alternative:** You can also copy `.cursorrules.template` to your project root as `.cursorrules` for similar (but less comprehensive) behavior:
-
-```bash
-cp .cursorrules.template /path/to/your/project/.cursorrules
-```
 
 **Note:** These are project-specific files that should be committed to your repository so all team members benefit from the same AI behavior. See [rules/README.md](rules/README.md) for more details.
 
