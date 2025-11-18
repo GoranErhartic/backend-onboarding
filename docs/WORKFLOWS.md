@@ -2,7 +2,7 @@
 
 Recommended workflows for different use cases.
 
-## Quick Analysis (Minimum Required)
+## Quick Analysis
 
 For a quick understanding of a codebase:
 
@@ -34,10 +34,10 @@ For comprehensive codebase understanding:
 For complete documentation and AI optimization:
 
 1. Complete Standard Analysis workflow
-2. Run optional steps:
+2. Run additional steps:
    - `/onboarding/generate-quick-reference` - Create quick reference index
    - `/onboarding/analyze-code-structure` - Code patterns and dependencies
-   - `/onboarding/assess-production-readiness` - Production readiness assessment
+   - `/onboarding/assess-production-readiness` (optional) - Production readiness assessment
 
 **Time:** ~60-90 minutes  
 **Output:** Complete documentation with AI-optimized references
@@ -89,6 +89,6 @@ For fastest completion:
 
 1. **analyze-endpoint-flows**: Can be interrupted and resumed - don't worry about long runs
 2. **Parallel Execution**: Run analysis steps simultaneously for faster completion
-3. **Incremental**: Run required steps first, then add analysis steps as needed
+3. **Incremental**: Run core steps first, then add additional steps as needed
 4. **Review Progress**: Check `.cursor/onboarding-docs/CURSOR-ONBOARDING.md` regularly to see what's done
 

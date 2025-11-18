@@ -19,7 +19,7 @@ Common issues and solutions when using the Cursor Onboarding Suite.
 **Problem:** Step reports that `.cursor/onboarding-docs/CURSOR-ONBOARDING.md` doesn't exist.
 
 **Solutions:**
-1. Run `/onboarding/initialize` first - this is required before any other step
+1. Run `/onboarding/initialize` first - this should be run before other steps
 2. Ensure you're in the correct project directory (the one with your source code)
 3. Check that `.cursor/onboarding-docs/` directory was created in your project root
 

@@ -1,12 +1,12 @@
 ---
-title: "09 - Analyze Code Structure (OPTIONAL)"
-description: "Analyze code patterns, conventions, dependencies, and structure - OPTIONAL: helps AI agents understand code organization"
+title: "09 - Analyze Code Structure"
+description: "Analyze code patterns, conventions, dependencies, and structure - helps AI agents understand code organization"
 author: "Goran Erhartic"
 ---
 
 Analyze the codebase to identify common patterns, anti-patterns, code conventions, architectural decisions, and component dependencies. This comprehensive analysis helps AI agents understand coding standards, best practices, and component interdependencies used in the project.
 
-**This step is OPTIONAL and can be run independently or in parallel with other steps.**
+**This step can be run independently or in parallel with other steps.**
 **DO NOT MODIFY ANY EXISTING CODE.**
 
 **CRITICAL - Parallel Execution & File Writes:**

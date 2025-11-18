@@ -38,7 +38,7 @@ This configures Cursor AI to act as a Senior Principal Engineer, prioritizing qu
 cp .cursorrules.template /path/to/your/project/.cursorrules
 ```
 
-## Step 2: Initialize (Required First Step)
+## Step 2: Initialize
 
 1. Open your project in Cursor IDE
 2. Start a new chat
@@ -48,11 +48,9 @@ This creates the foundation files needed for all other steps.
 
 ## Step 3: Run Analysis Steps
 
-### Required First Step
+**`/onboarding/initialize` should be run first.** After that, all other steps can run in any order.
 
-**Only `/onboarding/initialize` must be run first.** After that, all other steps can run in any order.
-
-### Recommended Steps (Can Run in Any Order)
+### Core Steps (Can Run in Any Order)
 
 After initialization, you can run these steps **in any order**, **independently**, or **in parallel**:
 
@@ -63,21 +61,18 @@ After initialization, you can run these steps **in any order**, **independently*
 - `/onboarding/analyze-config-and-testing` - Configuration and testing
 - `/onboarding/analyze-integrations` - External integrations and error handling
 - `/onboarding/analyze-domain-and-performance` - Business domain and performance
-
-### Optional Steps (Advanced)
-
-These are optional and can run independently:
-
-**Commands:**
 - `/onboarding/generate-quick-reference` - Create AI-optimized reference index
 - `/onboarding/analyze-code-structure` - Code patterns and dependencies
-- `/onboarding/assess-production-readiness` - Production readiness assessment
+
+### Optional Step
+
+- `/onboarding/assess-production-readiness` (OPTIONAL) - Production readiness assessment
 
 ## Execution Flow
 
 ```
-[Required First Step]
-initialize (MUST run first)
+[First Step]
+initialize (should run first)
                 ↓
 [All Other Steps - Can Run in Any Order, Independently or in Parallel]
         analyze-core-and-endpoints
@@ -86,12 +81,12 @@ initialize (MUST run first)
         analyze-config-and-testing
         analyze-integrations
         analyze-domain-and-performance
-        generate-quick-reference (optional)
-        analyze-code-structure (optional)
+        generate-quick-reference
+        analyze-code-structure
         assess-production-readiness (optional)
 ```
 
-**Note:** Only `/onboarding/initialize` must be run first. After that, all steps can run independently or in parallel in any order.
+**Note:** `/onboarding/initialize` should be run first. After that, all steps can run independently or in parallel in any order. Only `assess-production-readiness` is optional.
 
 ## Time Estimates
 
@@ -103,10 +98,10 @@ initialize (MUST run first)
 
 ## Tips
 
-1. **Only One Requirement**: Only `/onboarding/initialize` must run first - after that, run steps in any order
+1. **Initialize first**: Run `/onboarding/initialize` first - after that, run steps in any order
 2. **Parallel Execution**: Run multiple steps simultaneously in different chat sessions for faster completion
 3. **analyze-endpoint-flows**: Can be interrupted and resumed - it will automatically recover progress
-4. **Skip Optional Steps**: Only run optional advanced steps if you need that specific analysis
+4. **Optional step**: Only run `assess-production-readiness` if you need production readiness assessment
 5. **Check Progress**: Review `.cursor/onboarding-docs/CURSOR-ONBOARDING.md` to see what's been completed
 6. **Endpoint Templates**: Before creating new endpoints, check for existing `CURSOR_{METHOD}_*.md` template files in `.cursor/onboarding-docs/` - these provide complete implementation patterns and should be used as guides
 

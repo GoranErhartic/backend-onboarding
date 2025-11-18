@@ -29,7 +29,7 @@ fi
 
 # List of files to copy
 FILES=(
-    "commands/initialize/initialize.md"
+    "commands/initialize.md"
     "commands/discovery/analyze-core-and-endpoints.md"
     "commands/discovery/analyze-endpoint-flows.md"
     "commands/analysis/analyze-architecture.md"
@@ -85,7 +85,7 @@ echo ""
 echo -e "${YELLOW}Next steps:${NC}"
 echo "1. Restart Cursor IDE if it's currently running"
 echo "2. Open a project workspace"
-echo "3. Start a new chat and type: /onboarding/initialize (REQUIRED - must run first)"
+echo "3. Start a new chat and type: /onboarding/initialize (should run first)"
 echo "4. Then run any step: /onboarding/analyze-core-and-endpoints, /onboarding/analyze-endpoint-flows, etc."
 echo ""
 echo "See README.md or QUICK_START.md for detailed usage instructions."

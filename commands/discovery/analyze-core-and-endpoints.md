@@ -1,6 +1,6 @@
 ---
-title: "02 - Analyze Core Files & Discover Endpoints (REQUIRED)"
-description: "Analyze Core Files & Map Endpoints - REQUIRED: discovers endpoints for flow analysis"
+title: "02 - Analyze Core Files & Discover Endpoints"
+description: "Analyze Core Files & Map Endpoints - discovers endpoints for flow analysis"
 author: "Goran Erhartic"
 ---
 

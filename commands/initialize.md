@@ -1,6 +1,6 @@
 ---
-title: "Initialize Onboarding (REQUIRED)"
-description: "Initialize onboarding structure and perform project mapping - REQUIRED: run this first to set up groundwork"
+title: "Initialize Onboarding"
+description: "Initialize onboarding structure and perform project mapping - run this first to set up groundwork"
 author: "Goran Erhartic"
 ---
 
@@ -212,3 +212,4 @@ EXECUTION PLAN:
     * Note that steps can be run in parallel in separate sessions.
 
 **Proceed with all steps above.**
+

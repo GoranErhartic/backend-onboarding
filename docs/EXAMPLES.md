@@ -21,9 +21,9 @@ your-project/
 │   ├── DOMAIN.md                    # Business domain
 │   ├── API_CONTRACTS.md             # API contracts
 │   ├── PERFORMANCE.md               # Performance
-│   ├── QUICK_REFERENCE.md           # Quick reference (optional)
-│   ├── CODE_PATTERNS.md             # Code patterns (optional)
-│   ├── DEPENDENCY_GRAPH.md          # Dependencies (optional)
+│   ├── QUICK_REFERENCE.md           # Quick reference
+│   ├── CODE_PATTERNS.md             # Code patterns
+│   ├── DEPENDENCY_GRAPH.md          # Dependencies
 │   ├── PRODUCTION_READINESS.md      # Production assessment (optional)
 │   └── CURSOR_GET_api_users.md      # Endpoint docs
 │   └── ...                          # More endpoint docs
@@ -45,10 +45,10 @@ your-project/
 /onboarding/analyze-integrations
 /onboarding/analyze-domain-and-performance
 
-# Session 7: Optional steps
+# Session 7: Additional steps
 /onboarding/generate-quick-reference
 /onboarding/analyze-code-structure
-/onboarding/assess-production-readiness
+/onboarding/assess-production-readiness (optional)
 ```
 
 ## Example CURSOR-ONBOARDING.md Structure

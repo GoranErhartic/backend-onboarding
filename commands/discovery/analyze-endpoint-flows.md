@@ -1,6 +1,6 @@
 ---
-title: "03 - Analyze Endpoint Flows (REQUIRED)"
-description: "Analyze Endpoint Flows - REQUIRED: documents complete request/response flow for each endpoint"
+title: "03 - Analyze Endpoint Flows"
+description: "Analyze Endpoint Flows - documents complete request/response flow for each endpoint"
 author: "Goran Erhartic"
 ---
 

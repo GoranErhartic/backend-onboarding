@@ -1,6 +1,6 @@
 ---
-title: "08 - Generate Quick Reference (OPTIONAL)"
-description: "Generate AI-optimized quick reference index for fast lookups - OPTIONAL: run after analysis steps"
+title: "08 - Generate Quick Reference"
+description: "Generate AI-optimized quick reference index for fast lookups - run after analysis steps"
 author: "Goran Erhartic"
 ---
 

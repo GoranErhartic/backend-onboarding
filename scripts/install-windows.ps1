@@ -19,7 +19,7 @@ if (-not (Test-Path $TargetDir)) {
 
 # List of files to copy
 $Files = @(
-    "commands\initialize\initialize.md",
+    "commands\initialize.md",
     "commands\discovery\analyze-core-and-endpoints.md",
     "commands\discovery\analyze-endpoint-flows.md",
     "commands\analysis\analyze-architecture.md",
@@ -74,7 +74,7 @@ Write-Host ""
 Write-Host "Next steps:" -ForegroundColor Yellow
 Write-Host "1. Restart Cursor IDE if it's currently running"
 Write-Host "2. Open a project workspace"
-Write-Host "3. Start a new chat and type: /onboarding/initialize (REQUIRED - must run first)"
+Write-Host "3. Start a new chat and type: /onboarding/initialize (should run first)"
 Write-Host "4. Then run any step: /onboarding/analyze-core-and-endpoints, /onboarding/analyze-endpoint-flows, etc."
 Write-Host ""
 Write-Host "See README.md or QUICK_START.md for detailed usage instructions."
