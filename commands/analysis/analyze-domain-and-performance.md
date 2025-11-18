@@ -10,7 +10,7 @@ Analyze business domain, domain models, business rules, API contracts, request/r
 
 **CRITICAL - Parallel Execution & File Writes:**
 * All file writes MUST be written directly to disk using file write tools (not staged/suggested edits).
-* When updating `.cursor/CURSOR-ONBOARDING.md`, ALWAYS re-read the file first to get the latest state from any parallel sessions.
+* When updating `.cursor/onboarding-docs/CURSOR-ONBOARDING.md`, ALWAYS re-read the file first to get the latest state from any parallel sessions.
 * If changes are staged and not applied, other parallel sessions will not see them and may overwrite work.
 * This step marks itself as `[P]` (in progress) at the start to prevent duplicate execution.
 
@@ -19,19 +19,19 @@ EXECUTION PLAN:
 ## PART A: Business Domain & Domain Models
 
 0.  **Mark Command as In Progress [P]:**
-    * Check if `.cursor/CURSOR-ONBOARDING.md` exists.
+    * Check if `.cursor/onboarding-docs/CURSOR-ONBOARDING.md` exists.
     * **If it exists:** 
         * Read it to get the current Step Completion Status.
         * Update the Step Completion Status section to mark "Step 7 - Domain, API Contracts & Performance" as `[P]` (in progress).
-        * Write the updated content back to `.cursor/CURSOR-ONBOARDING.md`.
-    * **If it doesn't exist:** Report error and stop. User must run `/01-initialize` first.
+        * Write the updated content back to `.cursor/onboarding-docs/CURSOR-ONBOARDING.md`.
+    * **If it doesn't exist:** Report error and stop. User must run `/onboarding/initialize` first.
 
 1.  **Check for Initialization:**
-    * Check if `.cursor/CURSOR-ONBOARDING.md` exists.
-    * **If file doesn't exist:** Report error and stop. User must run `/initialize-onboarding` first.
+    * Check if `.cursor/onboarding-docs/CURSOR-ONBOARDING.md` exists.
+    * **If file doesn't exist:** Report error and stop. User must run `/onboarding/initialize` first.
 
 2.  **Read Master File:**
-    * Read `.cursor/CURSOR-ONBOARDING.md`.
+    * Read `.cursor/onboarding-docs/CURSOR-ONBOARDING.md`.
     * Review data models from Step 4 and endpoint flows from Step 3 to understand business domain (if available).
 
 3.  **Identify Domain Entities:**
@@ -296,7 +296,7 @@ EXECUTION PLAN:
 ## PART D: Generate Documentation
 
 24. **Generate Domain Documentation:**
-    * Create `.cursor/DOMAIN.md` with the following structure:
+    * Create `.cursor/onboarding-docs/DOMAIN.md` with the following structure:
 
       ```markdown
       # Business Domain & Domain Models
@@ -369,7 +369,7 @@ EXECUTION PLAN:
       ```
 
 25. **Generate API Contracts Documentation:**
-    * Create `.cursor/API_CONTRACTS.md` with the following structure:
+    * Create `.cursor/onboarding-docs/API_CONTRACTS.md` with the following structure:
 
       ```markdown
       # API Contracts & Validation
@@ -433,7 +433,7 @@ EXECUTION PLAN:
       ```
 
 26. **Generate Performance Documentation:**
-    * Create `.cursor/PERFORMANCE.md` with the following structure:
+    * Create `.cursor/onboarding-docs/PERFORMANCE.md` with the following structure:
 
       ```markdown
       # Performance & Optimization
@@ -488,12 +488,12 @@ EXECUTION PLAN:
       ```
 
 27. **Update Master File (Parallel-Safe):**
-    * Read `.cursor/CURSOR-ONBOARDING.md` again (to get the latest state from any parallel sessions).
+    * Read `.cursor/onboarding-docs/CURSOR-ONBOARDING.md` again (to get the latest state from any parallel sessions).
     * **Update only if section is empty or marked as placeholder** - do not overwrite existing content from parallel sessions.
     * Find the `## Business Domain` section and update with:
       ```markdown
       ## Business Domain
-      See [DOMAIN.md](.cursor/DOMAIN.md) for detailed business domain documentation.
+      See [DOMAIN.md](.cursor/onboarding-docs/DOMAIN.md) for detailed business domain documentation.
       
       **Domain:** [Brief description]
       **Core Entities:** [List main entities]
@@ -503,7 +503,7 @@ EXECUTION PLAN:
     * Find the `## API Contracts` section and replace with:
       ```markdown
       ## API Contracts
-      See [API_CONTRACTS.md](.cursor/API_CONTRACTS.md) for detailed API contracts documentation.
+      See [API_CONTRACTS.md](.cursor/onboarding-docs/API_CONTRACTS.md) for detailed API contracts documentation.
       
       **API Versioning:** [Strategy: URL, Header, Query, etc.]
       **API Documentation:** [Available/Not Available]
@@ -513,7 +513,7 @@ EXECUTION PLAN:
     * Find the `## Performance` section and replace with:
       ```markdown
       ## Performance
-      See [PERFORMANCE.md](.cursor/PERFORMANCE.md) for detailed performance documentation.
+      See [PERFORMANCE.md](.cursor/onboarding-docs/PERFORMANCE.md) for detailed performance documentation.
       
       **Caching:** [Types: In-Memory, Redis, CDN, etc.]
       **Database Optimization:** [Brief description]
@@ -521,7 +521,7 @@ EXECUTION PLAN:
       **Rate Limiting:** [Yes/No]
       **Performance Monitoring:** [Tool name if applicable]
       ```
-    * Write the updated content to `.cursor/CURSOR-ONBOARDING.md`, preserving all other sections and content from parallel sessions.
+    * Write the updated content to `.cursor/onboarding-docs/CURSOR-ONBOARDING.md`, preserving all other sections and content from parallel sessions.
 
 28. **Progress Report:**
     * Report completion status:
@@ -535,10 +535,10 @@ EXECUTION PLAN:
       - Performance bottlenecks identified
 
 29. **Update Step Completion Status:**
-    * Read `.cursor/CURSOR-ONBOARDING.md` again to get the latest state.
+    * Read `.cursor/onboarding-docs/CURSOR-ONBOARDING.md` again to get the latest state.
     * **Update the Step Completion Status section** to mark "Step 7 - Domain, API Contracts & Performance" as `[x]` (complete).
     * If the Step Completion Status section doesn't exist, add it with Step 7 marked as complete.
-    * Write the updated content back to `.cursor/CURSOR-ONBOARDING.md`.
+    * Write the updated content back to `.cursor/onboarding-docs/CURSOR-ONBOARDING.md`.
 
 30. **Completion:**
     * Tell the user that Step 7 is complete.

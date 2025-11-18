@@ -1,6 +1,6 @@
 ---
-title: "02 - Analyze Core Files & Discover Endpoints (REQUIRED)"
-description: "Analyze Core Files & Map Endpoints - REQUIRED: discovers endpoints for flow analysis"
+title: "02 - Analyze Core Files & Discover Endpoints"
+description: "Analyze Core Files & Map Endpoints - discovers endpoints for flow analysis"
 author: "Goran Erhartic"
 ---
 
@@ -10,7 +10,7 @@ Analyze all pending core files from the checklist AND scan for all endpoints to 
 
 **CRITICAL - Parallel Execution & File Writes:**
 * All file writes MUST be written directly to disk using file write tools (not staged/suggested edits).
-* When updating `.cursor/CURSOR-ONBOARDING.md`, ALWAYS re-read the file first to get the latest state from any parallel sessions.
+* When updating `.cursor/onboarding-docs/CURSOR-ONBOARDING.md`, ALWAYS re-read the file first to get the latest state from any parallel sessions.
 * If changes are staged and not applied, other parallel sessions will not see them and may overwrite work.
 * This step marks itself as `[P]` (in progress) at the start to prevent duplicate execution.
 
@@ -19,19 +19,19 @@ EXECUTION PLAN:
 ## PART A: Analyze Core Files
 
 0.  **Mark Command as In Progress [P]:**
-    * Check if `.cursor/CURSOR-ONBOARDING.md` exists.
+    * Check if `.cursor/onboarding-docs/CURSOR-ONBOARDING.md` exists.
     * **If it exists:** 
         * Read it to get the current Step Completion Status.
         * Update the Step Completion Status section to mark "Step 2 - Analyze Core Files & Discover Endpoints" as `[P]` (in progress).
-        * Write the updated content back to `.cursor/CURSOR-ONBOARDING.md`.
-    * **If it doesn't exist:** Report error and stop. User must run `/01-initialize` first.
+        * Write the updated content back to `.cursor/onboarding-docs/CURSOR-ONBOARDING.md`.
+    * **If it doesn't exist:** Report error and stop. User must run `/onboarding/initialize` first.
 
 1.  **Check for Initialization:**
-    * Check if `.cursor/CURSOR-ONBOARDING.md` exists.
-    * **If file doesn't exist:** Report error and stop. User must run `/initialize-onboarding` first.
+    * Check if `.cursor/onboarding-docs/CURSOR-ONBOARDING.md` exists.
+    * **If file doesn't exist:** Report error and stop. User must run `/onboarding/initialize` first.
 
 2.  **Read Master File:**
-    * Read `.cursor/CURSOR-ONBOARDING.md`.
+    * Read `.cursor/onboarding-docs/CURSOR-ONBOARDING.md`.
 
 3.  **Check for Core File Checklist:**
     * Find the `## Checklist: Core File Analysis` section.
@@ -177,7 +177,7 @@ EXECUTION PLAN:
 ## PART C: Write Results
 
 9.  **Write Results to `CURSOR-ONBOARDING.md` (Parallel-Safe):**
-    * Read the original `.cursor/CURSOR-ONBOARDING.md` content again (to get the latest state from any parallel sessions).
+    * Read the original `.cursor/onboarding-docs/CURSOR-ONBOARDING.md` content again (to get the latest state from any parallel sessions).
     
     * **For Core Files:**
         * **Append** the `new_file_summaries` under the `## Key Project Files` heading.
@@ -203,13 +203,13 @@ EXECUTION PLAN:
           - Keep `[ ]` for any remaining pending tasks
           - **Preserve** any tasks that were completed by other parallel sessions
     
-    * Write this *updated* content to `.cursor/CURSOR-ONBOARDING.md`, preserving all other sections and content from parallel sessions.
+    * Write this *updated* content to `.cursor/onboarding-docs/CURSOR-ONBOARDING.md`, preserving all other sections and content from parallel sessions.
 
 10. **Update Step Completion Status:**
-    * Read `.cursor/CURSOR-ONBOARDING.md` again to get the latest state.
+    * Read `.cursor/onboarding-docs/CURSOR-ONBOARDING.md` again to get the latest state.
     * **Update the Step Completion Status section** to mark "Step 2 - Analyze Core Files & Discover Endpoints" as `[x]` (complete).
     * If the Step Completion Status section doesn't exist, add it with Step 2 marked as complete.
-    * Write the updated content back to `.cursor/CURSOR-ONBOARDING.md`.
+    * Write the updated content back to `.cursor/onboarding-docs/CURSOR-ONBOARDING.md`.
 
 11. **Completion:**
     * Report completion status:
@@ -219,8 +219,8 @@ EXECUTION PLAN:
       - Total number of endpoints found
       - Number of errors encountered (if any)
     * **Note:** This step is complete. Other steps can now be run independently or in parallel:
-      - `/03-analyze-endpoint-flows` - Document endpoint flows (can run in parallel)
-      - `/04-analyze-architecture` - Analyze architecture (can run in parallel)
+      - `/onboarding/analyze-endpoint-flows` - Document endpoint flows (can run in parallel)
+      - `/onboarding/analyze-architecture` - Analyze architecture (can run in parallel)
       - Other steps can also run independently
 
 **Proceed with all steps above (Parts A, B, and C).**

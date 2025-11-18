@@ -16,7 +16,7 @@ SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 REPO_ROOT="$( cd "$SCRIPT_DIR/.." && pwd )"
 
 # Target directory
-TARGET_DIR="$HOME/.cursor/commands"
+TARGET_DIR="$HOME/.cursor/commands/onboarding"
 
 echo -e "${YELLOW}Installing Cursor IDE Onboarding Commands...${NC}"
 echo ""
@@ -27,18 +27,18 @@ if [ ! -d "$TARGET_DIR" ]; then
     mkdir -p "$TARGET_DIR"
 fi
 
-# List of files to copy (from new structure)
+# List of files to copy
 FILES=(
-    "commands/required/01-initialize.md"
-    "commands/required/02-analyze-core-and-endpoints.md"
-    "commands/required/03-analyze-endpoint-flows.md"
-    "commands/analysis/04-analyze-architecture.md"
-    "commands/analysis/05-analyze-config-and-testing.md"
-    "commands/analysis/06-analyze-integrations.md"
-    "commands/analysis/07-analyze-domain-and-performance.md"
-    "commands/optional/08-generate-quick-reference.md"
-    "commands/optional/09-analyze-code-structure.md"
-    "commands/optional/10-assess-production-readiness.md"
+    "commands/initialize.md"
+    "commands/discovery/analyze-core-and-endpoints.md"
+    "commands/discovery/analyze-endpoint-flows.md"
+    "commands/analysis/analyze-architecture.md"
+    "commands/analysis/analyze-config-and-testing.md"
+    "commands/analysis/analyze-integrations.md"
+    "commands/analysis/analyze-domain-and-performance.md"
+    "commands/advanced/generate-quick-reference.md"
+    "commands/advanced/analyze-code-structure.md"
+    "commands/advanced/assess-production-readiness.md"
 )
 
 # Copy each file
@@ -85,7 +85,7 @@ echo ""
 echo -e "${YELLOW}Next steps:${NC}"
 echo "1. Restart Cursor IDE if it's currently running"
 echo "2. Open a project workspace"
-echo "3. Start a new chat and type: /01-initialize (REQUIRED - must run first)"
-echo "4. Then run any step: /02-analyze-core-and-endpoints, /03-analyze-endpoint-flows, etc."
+echo "3. Start a new chat and type: /onboarding/initialize (should run first)"
+echo "4. Then run any step: /onboarding/analyze-core-and-endpoints, /onboarding/analyze-endpoint-flows, etc."
 echo ""
 echo "See README.md or QUICK_START.md for detailed usage instructions."

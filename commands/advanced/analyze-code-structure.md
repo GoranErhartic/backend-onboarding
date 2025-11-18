@@ -1,28 +1,28 @@
 ---
-title: "09 - Analyze Code Structure (OPTIONAL)"
-description: "Analyze code patterns, conventions, dependencies, and structure - OPTIONAL: helps AI agents understand code organization"
+title: "09 - Analyze Code Structure"
+description: "Analyze code patterns, conventions, dependencies, and structure - helps AI agents understand code organization"
 author: "Goran Erhartic"
 ---
 
 Analyze the codebase to identify common patterns, anti-patterns, code conventions, architectural decisions, and component dependencies. This comprehensive analysis helps AI agents understand coding standards, best practices, and component interdependencies used in the project.
 
-**This step is OPTIONAL and can be run independently or in parallel with other steps.**
+**This step can be run independently or in parallel with other steps.**
 **DO NOT MODIFY ANY EXISTING CODE.**
 
 **CRITICAL - Parallel Execution & File Writes:**
 * All file writes MUST be written directly to disk using file write tools (not staged/suggested edits).
-* When updating `.cursor/CURSOR-ONBOARDING.md`, ALWAYS re-read the file first to get the latest state from any parallel sessions.
+* When updating `.cursor/onboarding-docs/CURSOR-ONBOARDING.md`, ALWAYS re-read the file first to get the latest state from any parallel sessions.
 
 EXECUTION PLAN:
 
 ## PART A: Code Patterns & Conventions
 
 0.  **Check for Initialization:**
-    * Check if `.cursor/CURSOR-ONBOARDING.md` exists.
-    * **If file doesn't exist:** Report error and stop. User must run `/01-initialize` first.
+    * Check if `.cursor/onboarding-docs/CURSOR-ONBOARDING.md` exists.
+    * **If file doesn't exist:** Report error and stop. User must run `/onboarding/initialize` first.
 
 1.  **Read Master File:**
-    * Read `.cursor/CURSOR-ONBOARDING.md`.
+    * Read `.cursor/onboarding-docs/CURSOR-ONBOARDING.md`.
     * Review stack analysis and architecture documentation to understand the project structure.
 
 2.  **Identify Naming Conventions:**
@@ -132,9 +132,9 @@ EXECUTION PLAN:
 ## PART B: Dependency Analysis
 
 10. **Read Master File and Documentation:**
-    * Read `.cursor/CURSOR-ONBOARDING.md`.
-    * Read `.cursor/ARCHITECTURE.md` (if exists).
-    * Read `.cursor/INTEGRATIONS.md` (if exists).
+    * Read `.cursor/onboarding-docs/CURSOR-ONBOARDING.md`.
+    * Read `.cursor/onboarding-docs/ARCHITECTURE.md` (if exists).
+    * Read `.cursor/onboarding-docs/INTEGRATIONS.md` (if exists).
     * Review core files analysis from `CURSOR-ONBOARDING.md`.
 
 11. **Analyze Component Dependencies:**
@@ -162,7 +162,7 @@ EXECUTION PLAN:
       - Circular dependencies
 
 13. **Map Data Model Dependencies:**
-    * Review data models from `.cursor/DATA_MODELS.md` (if exists).
+    * Review data models from `.cursor/onboarding-docs/DATA_MODELS.md` (if exists).
     * Map entity relationships:
       - Foreign key relationships
       - Navigation properties
@@ -195,7 +195,7 @@ EXECUTION PLAN:
 ## PART C: Generate Documentation
 
 16. **Generate Code Patterns Documentation:**
-    * Create `.cursor/CODE_PATTERNS.md` with the following structure:
+    * Create `.cursor/onboarding-docs/CODE_PATTERNS.md` with the following structure:
 
       ```markdown
       # Code Patterns & Conventions
@@ -316,7 +316,7 @@ EXECUTION PLAN:
       ```
 
 17. **Generate Dependency Graph Documentation:**
-    * Create `.cursor/DEPENDENCY_GRAPH.md` with the following structure:
+    * Create `.cursor/onboarding-docs/DEPENDENCY_GRAPH.md` with the following structure:
 
       ```markdown
       # Dependency Graph
@@ -481,7 +481,7 @@ EXECUTION PLAN:
       ```
 
 18. **Generate Dependency Metadata File:**
-    * Create `.cursor/DEPENDENCY_METADATA.json` with structured dependency data:
+    * Create `.cursor/onboarding-docs/DEPENDENCY_METADATA.json` with structured dependency data:
       - Service dependencies (graph structure)
       - Module dependencies
       - External dependencies
@@ -489,12 +489,12 @@ EXECUTION PLAN:
       - Data model dependencies
 
 19. **Update Master File (Parallel-Safe):**
-    * Read `.cursor/CURSOR-ONBOARDING.md` again (to get the latest state from any parallel sessions).
+    * Read `.cursor/onboarding-docs/CURSOR-ONBOARDING.md` again (to get the latest state from any parallel sessions).
     * **Update only if section is empty or marked as placeholder** - do not overwrite existing content from parallel sessions.
     * Find the `## Code Patterns & Conventions` section and update with:
       ```markdown
       ## Code Patterns & Conventions
-      See [CODE_PATTERNS.md](.cursor/CODE_PATTERNS.md) for detailed code patterns and conventions documentation.
+      See [CODE_PATTERNS.md](.cursor/onboarding-docs/CODE_PATTERNS.md) for detailed code patterns and conventions documentation.
       
       **Naming Conventions:** [Brief summary]
       **Common Patterns:** [List main patterns]
@@ -503,15 +503,15 @@ EXECUTION PLAN:
     * Find the `## Dependency Graph` section and update with:
       ```markdown
       ## Dependency Graph
-      See [DEPENDENCY_GRAPH.md](.cursor/DEPENDENCY_GRAPH.md) for detailed dependency relationships.
-      See [DEPENDENCY_METADATA.json](.cursor/DEPENDENCY_METADATA.json) for structured dependency data.
+      See [DEPENDENCY_GRAPH.md](.cursor/onboarding-docs/DEPENDENCY_GRAPH.md) for detailed dependency relationships.
+      See [DEPENDENCY_METADATA.json](.cursor/onboarding-docs/DEPENDENCY_METADATA.json) for structured dependency data.
       
       **Total Services:** [count]
       **Total Modules:** [count]
       **External Dependencies:** [count]
       **Circular Dependencies:** [count or "None"]
       ```
-    * Write the updated content to `.cursor/CURSOR-ONBOARDING.md`, preserving all other sections and content from parallel sessions.
+    * Write the updated content to `.cursor/onboarding-docs/CURSOR-ONBOARDING.md`, preserving all other sections and content from parallel sessions.
 
 20. **Completion:**
     * Report completion status:

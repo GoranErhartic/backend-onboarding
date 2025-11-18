@@ -16,88 +16,94 @@ cd cursor-onboarding-suite
 .\scripts\install-windows.ps1
 ```
 
-## Step 2: Initialize (Required First Step)
+### Optional: Add Project Rules (Recommended)
+
+For best results, copy the `rules` folder to your project's `.cursor` folder:
+
+**Mac/Linux:**
+```bash
+cp -r rules /path/to/your/project/.cursor/rules
+```
+
+**Windows:**
+```powershell
+Copy-Item -Path rules -Destination .cursor\rules -Recurse
+```
+
+This configures Cursor AI to act as a Senior Principal Engineer, prioritizing quality, thinking thoroughly, and automatically leveraging analysis results from the `.cursor/onboarding-docs` folder.
+
+**Alternative:** You can also copy `.cursorrules.template` to your project root as `.cursorrules` for similar (but less comprehensive) behavior:
+
+```bash
+cp .cursorrules.template /path/to/your/project/.cursorrules
+```
+
+## Step 2: Initialize
 
 1. Open your project in Cursor IDE
 2. Start a new chat
-3. Type: `/01-initialize`
+3. Type: `/onboarding/initialize`
 
 This creates the foundation files needed for all other steps.
 
 ## Step 3: Run Analysis Steps
 
-### Required Steps (Run in Order)
+**`/onboarding/initialize` should be run first.** After that, all other steps can run in any order.
 
-```
-01-initialize → 02-analyze-core-and-endpoints → 03-analyze-endpoint-flows
-```
+### Core Steps (Can Run in Any Order)
 
-**Commands:**
-- `/01-initialize` - Set up project mapping (REQUIRED FIRST)
-- `/02-analyze-core-and-endpoints` - Discover endpoints (REQUIRED)
-- `/03-analyze-endpoint-flows` - Document endpoint flows (REQUIRED)
-
-### Analysis Steps (Can Run in Parallel)
-
-After step 02, you can run these **in parallel** in separate chat sessions:
-
-```
-04-analyze-architecture
-05-analyze-config-and-testing
-06-analyze-integrations
-07-analyze-domain-and-performance
-```
+After initialization, you can run these steps **in any order**, **independently**, or **in parallel**:
 
 **Commands:**
-- `/04-analyze-architecture` - Architecture, data models, security
-- `/05-analyze-config-and-testing` - Configuration and testing
-- `/06-analyze-integrations` - External integrations and error handling
-- `/07-analyze-domain-and-performance` - Business domain and performance
+- `/onboarding/analyze-core-and-endpoints` - Discover endpoints and analyze core files
+- `/onboarding/analyze-endpoint-flows` - Document endpoint flows
+- `/onboarding/analyze-architecture` - Architecture, data models, security
+- `/onboarding/analyze-config-and-testing` - Configuration and testing
+- `/onboarding/analyze-integrations` - External integrations and error handling
+- `/onboarding/analyze-domain-and-performance` - Business domain and performance
+- `/onboarding/generate-quick-reference` - Create AI-optimized reference index
+- `/onboarding/analyze-code-structure` - Code patterns and dependencies
 
-### Optional Steps (Advanced)
+### Optional Step
 
-Run these after completing the required steps:
-
-```
-08-generate-quick-reference
-09-analyze-code-structure
-10-assess-production-readiness
-```
-
-**Commands:**
-- `/08-generate-quick-reference` - Create AI-optimized reference index
-- `/09-analyze-code-structure` - Code patterns and dependencies
-- `/10-assess-production-readiness` - Production readiness assessment
+- `/onboarding/assess-production-readiness` (OPTIONAL) - Production readiness assessment
 
 ## Execution Flow
 
 ```
-[Required Path]
-01-initialize → 02-analyze-core-and-endpoints → 03-analyze-endpoint-flows
+[First Step]
+initialize (should run first)
                 ↓
-        04-analyze-architecture (parallel)
-        05-analyze-config-and-testing (parallel)
-        06-analyze-integrations (parallel)
-        07-analyze-domain-and-performance (parallel)
-                ↓
-[Optional Path]
-08-generate-quick-reference → 09-analyze-code-structure → 10-assess-production-readiness
+[All Other Steps - Can Run in Any Order, Independently or in Parallel]
+        analyze-core-and-endpoints
+        analyze-endpoint-flows
+        analyze-architecture
+        analyze-config-and-testing
+        analyze-integrations
+        analyze-domain-and-performance
+        generate-quick-reference
+        analyze-code-structure
+        assess-production-readiness (optional)
 ```
+
+**Note:** `/onboarding/initialize` should be run first. After that, all steps can run independently or in parallel in any order. Only `assess-production-readiness` is optional.
 
 ## Time Estimates
 
-- **01-initialize**: ~2-5 minutes
-- **02-analyze-core-and-endpoints**: ~5-10 minutes
-- **03-analyze-endpoint-flows**: ~10-30 minutes (depends on number of endpoints)
-- **04-07 (analysis steps)**: ~5-15 minutes each (can run in parallel)
-- **08-10 (optional steps)**: ~5-20 minutes each
+- **initialize**: ~2-5 minutes
+- **analyze-core-and-endpoints**: ~5-10 minutes
+- **analyze-endpoint-flows**: ~10-30 minutes (depends on number of endpoints)
+- **analysis steps**: ~5-15 minutes each (can run in parallel)
+- **advanced steps**: ~5-20 minutes each
 
 ## Tips
 
-1. **Parallel Execution**: Run steps 04-07 simultaneously in different chat sessions for faster completion
-2. **Step 03**: Can be interrupted and resumed - it will automatically recover progress
-3. **Skip Optional Steps**: Only run optional steps if you need that specific analysis
-4. **Check Progress**: Review `.cursor/CURSOR-ONBOARDING.md` to see what's been completed
+1. **Initialize first**: Run `/onboarding/initialize` first - after that, run steps in any order
+2. **Parallel Execution**: Run multiple steps simultaneously in different chat sessions for faster completion
+3. **analyze-endpoint-flows**: Can be interrupted and resumed - it will automatically recover progress
+4. **Optional step**: Only run `assess-production-readiness` if you need production readiness assessment
+5. **Check Progress**: Review `.cursor/onboarding-docs/CURSOR-ONBOARDING.md` to see what's been completed
+6. **Endpoint Templates**: Before creating new endpoints, check for existing `CURSOR_{METHOD}_*.md` template files in `.cursor/onboarding-docs/` - these provide complete implementation patterns and should be used as guides
 
 ## Need Help?
 

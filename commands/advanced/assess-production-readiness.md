@@ -10,7 +10,7 @@ Assess the project's production readiness by evaluating robustness, test coverag
 
 **CRITICAL - Parallel Execution & File Writes:**
 * All file writes MUST be written directly to disk using file write tools (not staged/suggested edits).
-* When updating `.cursor/CURSOR-ONBOARDING.md`, ALWAYS re-read the file first to get the latest state from any parallel sessions.
+* When updating `.cursor/onboarding-docs/CURSOR-ONBOARDING.md`, ALWAYS re-read the file first to get the latest state from any parallel sessions.
 * If changes are staged and not applied, other parallel sessions will not see them and may overwrite work.
 * This step marks itself as `[P]` (in progress) at the start to prevent duplicate execution.
 
@@ -19,19 +19,19 @@ EXECUTION PLAN:
 ## PART A: Initial Setup & Summary Checklist
 
 0.  **Mark Command as In Progress [P]:**
-    * Check if `.cursor/CURSOR-ONBOARDING.md` exists.
+    * Check if `.cursor/onboarding-docs/CURSOR-ONBOARDING.md` exists.
     * **If it exists:** 
         * Read it to get the current Step Completion Status.
-        * Update the Step Completion Status section to mark "Production Readiness Assessment" as `[P]` (in progress).
-        * Write the updated content back to `.cursor/CURSOR-ONBOARDING.md`.
-    * **If it doesn't exist:** Report error and stop. User must run `/01-initialize` first.
+        * Update the Step Completion Status section to mark "Step 10 - Assess Production Readiness" as `[P]` (in progress).
+        * Write the updated content back to `.cursor/onboarding-docs/CURSOR-ONBOARDING.md`.
+    * **If it doesn't exist:** Report error and stop. User must run `/onboarding/initialize` first.
 
 1.  **Check for Initialization:**
-    * Check if `.cursor/CURSOR-ONBOARDING.md` exists.
-    * **If file doesn't exist:** Report error and stop. User must run `/initialize-onboarding` first.
+    * Check if `.cursor/onboarding-docs/CURSOR-ONBOARDING.md` exists.
+    * **If file doesn't exist:** Report error and stop. User must run `/onboarding/initialize` first.
 
 2.  **Read Master File:**
-    * Read `.cursor/CURSOR-ONBOARDING.md`.
+    * Read `.cursor/onboarding-docs/CURSOR-ONBOARDING.md`.
     * Review existing sections to understand what has been analyzed:
       - Stack Analysis
       - Architecture
@@ -166,7 +166,7 @@ EXECUTION PLAN:
 
 8.  **Test Coverage Analysis:**
     * Review existing test coverage:
-      - Read `.cursor/TESTING.md` if available
+      - Read `.cursor/onboarding-docs/TESTING.md` if available
       - Use `codebase_search`: "What is the test coverage? How is it measured?"
       - Look for coverage reports:
         - `coverage/`, `htmlcov/`, `.coverage`
@@ -239,7 +239,7 @@ EXECUTION PLAN:
 
 11. **Security Best Practices Review:**
     * Review security implementation:
-      - Read `.cursor/SECURITY.md` if available
+      - Read `.cursor/onboarding-docs/SECURITY.md` if available
       - Use `codebase_search`: "What security measures are implemented?"
       - Review security configurations:
         - Authentication mechanisms
@@ -420,7 +420,7 @@ EXECUTION PLAN:
 
 18. **Performance Best Practices Assessment:**
     * Review performance optimizations:
-      - Read `.cursor/PERFORMANCE.md` if available (from 07-analyze-domain-and-performance)
+      - Read `.cursor/onboarding-docs/PERFORMANCE.md` if available (from 07-analyze-domain-and-performance)
       - Use `codebase_search`: "What performance optimizations are implemented?"
       - Review:
         - Caching strategies
@@ -499,7 +499,7 @@ EXECUTION PLAN:
 
 21. **Configuration Management Assessment:**
     * Review configuration practices:
-      - Read `.cursor/CONFIGURATION.md` if available
+      - Read `.cursor/onboarding-docs/CONFIGURATION.md` if available
       - Assess:
         - Environment-specific configuration
         - Secrets management
@@ -593,7 +593,7 @@ EXECUTION PLAN:
 ## PART I: Generate Production Readiness Report
 
 25. **Create Summary Checklist:**
-    * Create `.cursor/PRODUCTION_READINESS.md` with summary checklist at the top:
+    * Create `.cursor/onboarding-docs/PRODUCTION_READINESS.md` with summary checklist at the top:
 
       ```markdown
       # Production Readiness Assessment
@@ -655,7 +655,7 @@ EXECUTION PLAN:
       ```
 
 26. **Generate Detailed Robustness Section:**
-    * Add to `.cursor/PRODUCTION_READINESS.md`:
+    * Add to `.cursor/onboarding-docs/PRODUCTION_READINESS.md`:
 
       ```markdown
       ## Robustness Assessment
@@ -772,7 +772,7 @@ EXECUTION PLAN:
       ```
 
 27. **Generate Detailed Test Coverage Section:**
-    * Add to `.cursor/PRODUCTION_READINESS.md`:
+    * Add to `.cursor/onboarding-docs/PRODUCTION_READINESS.md`:
 
       ```markdown
       ## Test Coverage Assessment
@@ -881,7 +881,7 @@ EXECUTION PLAN:
       ```
 
 28. **Generate Detailed Security Section:**
-    * Add to `.cursor/PRODUCTION_READINESS.md`:
+    * Add to `.cursor/onboarding-docs/PRODUCTION_READINESS.md`:
 
       ```markdown
       ## Security Assessment
@@ -982,7 +982,7 @@ EXECUTION PLAN:
       ```
 
 29. **Generate Detailed Monitoring Section:**
-    * Add to `.cursor/PRODUCTION_READINESS.md`:
+    * Add to `.cursor/onboarding-docs/PRODUCTION_READINESS.md`:
 
       ```markdown
       ## Monitoring & Observability Assessment
@@ -1060,7 +1060,7 @@ EXECUTION PLAN:
       ```
 
 30. **Generate Detailed Performance Section:**
-    * Add to `.cursor/PRODUCTION_READINESS.md`:
+    * Add to `.cursor/onboarding-docs/PRODUCTION_READINESS.md`:
 
       ```markdown
       ## Performance & Scalability Assessment
@@ -1134,7 +1134,7 @@ EXECUTION PLAN:
       ```
 
 31. **Generate Detailed Configuration & Deployment Section:**
-    * Add to `.cursor/PRODUCTION_READINESS.md`:
+    * Add to `.cursor/onboarding-docs/PRODUCTION_READINESS.md`:
 
       ```markdown
       ## Configuration & Deployment Assessment
@@ -1189,7 +1189,7 @@ EXECUTION PLAN:
       ```
 
 32. **Generate Detailed Documentation & Compliance Section:**
-    * Add to `.cursor/PRODUCTION_READINESS.md`:
+    * Add to `.cursor/onboarding-docs/PRODUCTION_READINESS.md`:
 
       ```markdown
       ## Documentation & Compliance Assessment
@@ -1251,7 +1251,7 @@ EXECUTION PLAN:
       - Actionable steps to resolve
       - Estimated effort (if possible)
       - Dependencies (if any)
-    * Add to `.cursor/PRODUCTION_READINESS.md`:
+    * Add to `.cursor/onboarding-docs/PRODUCTION_READINESS.md`:
 
       ```markdown
       ## Critical Recommendations Summary
@@ -1322,19 +1322,19 @@ EXECUTION PLAN:
 ## PART J: Update Master File & Complete
 
 34. **Update Master File (Parallel-Safe):**
-    * Read `.cursor/CURSOR-ONBOARDING.md` again (to get the latest state from any parallel sessions).
+    * Read `.cursor/onboarding-docs/CURSOR-ONBOARDING.md` again (to get the latest state from any parallel sessions).
     * **Update only if section is empty or marked as placeholder** - do not overwrite existing content from parallel sessions.
     * Add a new section:
 
       ```markdown
       ## Production Readiness
-      See [PRODUCTION_READINESS.md](.cursor/PRODUCTION_READINESS.md) for detailed production readiness assessment.
+      See [PRODUCTION_READINESS.md](.cursor/onboarding-docs/PRODUCTION_READINESS.md) for detailed production readiness assessment.
       
       **Overall Status:** [Ready/Partial/Not Ready]
       **Readiness Score:** [X/100]
       **Critical Issues:** [Count]
       ```
-    * Write the updated content to `.cursor/CURSOR-ONBOARDING.md`, preserving all other sections and content from parallel sessions.
+    * Write the updated content to `.cursor/onboarding-docs/CURSOR-ONBOARDING.md`, preserving all other sections and content from parallel sessions.
 
 35. **Progress Report:**
     * Report completion status:
@@ -1345,10 +1345,10 @@ EXECUTION PLAN:
       - Critical recommendations count
 
 36. **Update Step Completion Status:**
-    * Read `.cursor/CURSOR-ONBOARDING.md` again to get the latest state.
-    * **Update the Step Completion Status section** to mark "Production Readiness Assessment" as `[x]` (complete).
-    * If the Step Completion Status section doesn't exist, add it with Production Readiness Assessment marked as complete.
-    * Write the updated content back to `.cursor/CURSOR-ONBOARDING.md`.
+    * Read `.cursor/onboarding-docs/CURSOR-ONBOARDING.md` again to get the latest state.
+    * **Update the Step Completion Status section** to mark "Step 10 - Assess Production Readiness" as `[x]` (complete).
+    * If the Step Completion Status section doesn't exist, add it with Step 10 marked as complete.
+    * Write the updated content back to `.cursor/onboarding-docs/CURSOR-ONBOARDING.md`.
 
 37. **Completion:**
     * Tell the user that Production Readiness Assessment is complete.

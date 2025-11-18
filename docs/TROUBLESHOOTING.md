@@ -16,20 +16,20 @@ Common issues and solutions when using the Cursor Onboarding Suite.
 
 ## Step Fails with "File Doesn't Exist"
 
-**Problem:** Step reports that `.cursor/CURSOR-ONBOARDING.md` doesn't exist.
+**Problem:** Step reports that `.cursor/onboarding-docs/CURSOR-ONBOARDING.md` doesn't exist.
 
 **Solutions:**
-1. Run `/01-initialize` first - this is required before any other step
+1. Run `/onboarding/initialize` first - this should be run before other steps
 2. Ensure you're in the correct project directory (the one with your source code)
-3. Check that `.cursor/` directory was created in your project root
+3. Check that `.cursor/onboarding-docs/` directory was created in your project root
 
-## Step 03 Seems Stuck
+## analyze-endpoint-flows Seems Stuck
 
-**Problem:** Step 03 (analyze-endpoint-flows) appears to be running indefinitely.
+**Problem:** analyze-endpoint-flows appears to be running indefinitely.
 
 **Solutions:**
-1. This is normal - Step 03 processes endpoints in a loop until all are analyzed
-2. Check `.cursor/CURSOR-ONBOARDING.md` to see progress
+1. This is normal - analyze-endpoint-flows processes endpoints in a loop until all are analyzed
+2. Check `.cursor/onboarding-docs/CURSOR-ONBOARDING.md` to see progress
 3. You can interrupt and resume - it will automatically recover progress
 4. For large projects, consider running multiple instances in parallel
 
@@ -50,12 +50,12 @@ Common issues and solutions when using the Cursor Onboarding Suite.
 **Solutions:**
 1. Each step is designed to be parallel-safe - conflicts should be rare
 2. If you see conflicts, ensure you're running different steps (not the same step multiple times)
-3. Step 03 is specifically designed for parallel execution - multiple instances are safe
-4. Check `.cursor/CURSOR-ONBOARDING.md` to see what's been completed
+3. analyze-endpoint-flows is specifically designed for parallel execution - multiple instances are safe
+4. Check `.cursor/onboarding-docs/CURSOR-ONBOARDING.md` to see what's been completed
 
 ## No Endpoints Found
 
-**Problem:** Step 02 doesn't find any endpoints.
+**Problem:** analyze-core-and-endpoints doesn't find any endpoints.
 
 **Solutions:**
 1. This may be normal for non-API projects (libraries, CLI tools, etc.)
@@ -69,7 +69,7 @@ Common issues and solutions when using the Cursor Onboarding Suite.
 
 **Solutions:**
 1. Start a new chat for each step to avoid context window issues
-2. For Step 03, it will automatically pause if context window is low
+2. For analyze-endpoint-flows, it will automatically pause if context window is low
 3. Resume by running the same command again in a new session
 4. Consider running fewer steps simultaneously
 

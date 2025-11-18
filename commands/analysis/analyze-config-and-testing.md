@@ -10,7 +10,7 @@ Analyze configuration management, environment variables, environment-specific se
 
 **CRITICAL - Parallel Execution & File Writes:**
 * All file writes MUST be written directly to disk using file write tools (not staged/suggested edits).
-* When updating `.cursor/CURSOR-ONBOARDING.md`, ALWAYS re-read the file first to get the latest state from any parallel sessions.
+* When updating `.cursor/onboarding-docs/CURSOR-ONBOARDING.md`, ALWAYS re-read the file first to get the latest state from any parallel sessions.
 * If changes are staged and not applied, other parallel sessions will not see them and may overwrite work.
 * This step marks itself as `[P]` (in progress) at the start to prevent duplicate execution.
 
@@ -19,19 +19,19 @@ EXECUTION PLAN:
 ## PART A: Configuration & Environment Management
 
 0.  **Mark Command as In Progress [P]:**
-    * Check if `.cursor/CURSOR-ONBOARDING.md` exists.
+    * Check if `.cursor/onboarding-docs/CURSOR-ONBOARDING.md` exists.
     * **If it exists:** 
         * Read it to get the current Step Completion Status.
         * Update the Step Completion Status section to mark "Step 5 - Configuration & Testing" as `[P]` (in progress).
-        * Write the updated content back to `.cursor/CURSOR-ONBOARDING.md`.
-    * **If it doesn't exist:** Report error and stop. User must run `/01-initialize` first.
+        * Write the updated content back to `.cursor/onboarding-docs/CURSOR-ONBOARDING.md`.
+    * **If it doesn't exist:** Report error and stop. User must run `/onboarding/initialize` first.
 
 1.  **Check for Initialization:**
-    * Check if `.cursor/CURSOR-ONBOARDING.md` exists.
-    * **If file doesn't exist:** Report error and stop. User must run `/initialize-onboarding` first.
+    * Check if `.cursor/onboarding-docs/CURSOR-ONBOARDING.md` exists.
+    * **If file doesn't exist:** Report error and stop. User must run `/onboarding/initialize` first.
 
 2.  **Read Master File:**
-    * Read `.cursor/CURSOR-ONBOARDING.md`.
+    * Read `.cursor/onboarding-docs/CURSOR-ONBOARDING.md`.
     * Review the stack analysis and key project files to identify configuration files (if available).
 
 3.  **Identify Configuration Files:**
@@ -192,7 +192,7 @@ EXECUTION PLAN:
 ## PART C: Generate Documentation
 
 16. **Generate Configuration Documentation:**
-    * Create `.cursor/CONFIGURATION.md` with the following structure:
+    * Create `.cursor/onboarding-docs/CONFIGURATION.md` with the following structure:
 
       ```markdown
       # Configuration & Environment Management
@@ -255,7 +255,7 @@ EXECUTION PLAN:
       ```
 
 17. **Generate Testing Documentation:**
-    * Create `.cursor/TESTING.md` with the following structure:
+    * Create `.cursor/onboarding-docs/TESTING.md` with the following structure:
 
       ```markdown
       # Testing Strategy
@@ -321,12 +321,12 @@ EXECUTION PLAN:
       ```
 
 18. **Update Master File (Parallel-Safe):**
-    * Read `.cursor/CURSOR-ONBOARDING.md` again (to get the latest state from any parallel sessions).
+    * Read `.cursor/onboarding-docs/CURSOR-ONBOARDING.md` again (to get the latest state from any parallel sessions).
     * **Update only if section is empty or marked as placeholder** - do not overwrite existing content from parallel sessions.
     * Find the `## Configuration` section and update with:
       ```markdown
       ## Configuration
-      See [CONFIGURATION.md](.cursor/CONFIGURATION.md) for detailed configuration documentation.
+      See [CONFIGURATION.md](.cursor/onboarding-docs/CONFIGURATION.md) for detailed configuration documentation.
       
       **Configuration Files:** [List main files]
       **Required Environment Variables:** [Count]
@@ -336,14 +336,14 @@ EXECUTION PLAN:
     * Find the `## Testing` section and replace with:
       ```markdown
       ## Testing
-      See [TESTING.md](.cursor/TESTING.md) for detailed testing documentation.
+      See [TESTING.md](.cursor/onboarding-docs/TESTING.md) for detailed testing documentation.
       
       **Test Framework:** [Framework name]
       **Test Types:** [List: Unit, Integration, E2E]
       **Coverage Tool:** [Coverage tool if applicable]
       **Run Tests:** [Command to run tests]
       ```
-    * Write the updated content to `.cursor/CURSOR-ONBOARDING.md`, preserving all other sections and content from parallel sessions.
+    * Write the updated content to `.cursor/onboarding-docs/CURSOR-ONBOARDING.md`, preserving all other sections and content from parallel sessions.
 
 19. **Progress Report:**
     * Report completion status:
@@ -355,15 +355,15 @@ EXECUTION PLAN:
       - Test execution commands documented
 
 20. **Update Step Completion Status:**
-    * Read `.cursor/CURSOR-ONBOARDING.md` again to get the latest state.
+    * Read `.cursor/onboarding-docs/CURSOR-ONBOARDING.md` again to get the latest state.
     * **Update the Step Completion Status section** to mark "Step 5 - Configuration & Testing" as `[x]` (complete).
     * If the Step Completion Status section doesn't exist, add it with Step 5 marked as complete.
-    * Write the updated content back to `.cursor/CURSOR-ONBOARDING.md`.
+    * Write the updated content back to `.cursor/onboarding-docs/CURSOR-ONBOARDING.md`.
 
 21. **Completion:**
     * Tell the user that Step 5 is complete.
     * **Note:** Other steps can now be run independently or in parallel:
-      - `/06-analyze-integrations` - Analyze integrations & error handling (can run in parallel)
-      - `/07-analyze-domain-and-performance` - Analyze domain, API contracts & performance (can run in parallel)
+      - `/onboarding/analyze-integrations` - Analyze integrations & error handling (can run in parallel)
+      - `/onboarding/analyze-domain-and-performance` - Analyze domain, API contracts & performance (can run in parallel)
 
 **Proceed with all steps above (Parts A, B, and C).**
