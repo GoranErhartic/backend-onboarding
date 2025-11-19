@@ -99,6 +99,9 @@ EXECUTION PLAN:
       * [ ] Step 5 - Configuration & Testing
       * [ ] Step 6 - Integrations & Error Handling
       * [ ] Step 7 - Domain, API Contracts & Performance
+      * [ ] Step 8 - Generate Quick Reference
+      * [ ] Step 9 - Analyze Code Structure
+      * [ ] Step 10 - Assess Production Readiness (Optional)
       
       ## Stack Analysis
       [Insert detailed stack analysis here, including:
@@ -206,6 +209,9 @@ EXECUTION PLAN:
         - If "Step 5 - Configuration & Testing" is `[ ]`: `/onboarding/analyze-config-and-testing`
         - If "Step 6 - Integrations & Error Handling" is `[ ]`: `/onboarding/analyze-integrations`
         - If "Step 7 - Domain, API Contracts & Performance" is `[ ]`: `/onboarding/analyze-domain-and-performance`
+        - If "Step 8 - Generate Quick Reference" is `[ ]`: `/onboarding/generate-quick-reference`
+        - If "Step 9 - Analyze Code Structure" is `[ ]`: `/onboarding/analyze-code-structure`
+        - If "Step 10 - Assess Production Readiness (Optional)" is `[ ]`: `/onboarding/assess-production-readiness`
       - Format: "**Pending steps:** [list of command names]"
       - If all steps are complete or in progress, report: "All steps are complete or currently running."
     * Inform the user that they can now run any analysis step independently.
