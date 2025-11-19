@@ -17,15 +17,23 @@ EXECUTION PLAN:
 
 ## PART A: Code Patterns & Conventions
 
-0.  **Check for Initialization:**
+0.  **Mark Command as In Progress [P]:**
+    * Check if `.cursor/onboarding-docs/CURSOR-ONBOARDING.md` exists.
+    * **If it exists:** 
+        * Read it to get the current Step Completion Status.
+        * Update the Step Completion Status section to mark "Step 9 - Analyze Code Structure" as `[P]` (in progress).
+        * Write the updated content back to `.cursor/onboarding-docs/CURSOR-ONBOARDING.md`.
+    * **If it doesn't exist:** Report error and stop. User must run `/onboarding/initialize` first.
+
+1.  **Check for Initialization:**
     * Check if `.cursor/onboarding-docs/CURSOR-ONBOARDING.md` exists.
     * **If file doesn't exist:** Report error and stop. User must run `/onboarding/initialize` first.
 
-1.  **Read Master File:**
+2.  **Read Master File:**
     * Read `.cursor/onboarding-docs/CURSOR-ONBOARDING.md`.
     * Review stack analysis and architecture documentation to understand the project structure.
 
-2.  **Identify Naming Conventions:**
+3.  **Identify Naming Conventions:**
     * Use `codebase_search` with queries:
       - "What naming conventions are used for classes, methods, and variables?"
       - "How are files and directories named?"
@@ -41,7 +49,7 @@ EXECUTION PLAN:
       - File naming conventions
       - Directory structure conventions
 
-3.  **Identify Common Patterns:**
+4.  **Identify Common Patterns:**
     * Use `codebase_search` to find patterns:
       - Query: "What design patterns are commonly used in this codebase?"
       - Query: "How are services typically structured?"
@@ -59,7 +67,7 @@ EXECUTION PLAN:
       - Pattern implementations
       - Pattern variations
 
-4.  **Identify Anti-Patterns:**
+5.  **Identify Anti-Patterns:**
     * Use `codebase_search` to find potential anti-patterns:
       - Query: "Are there any code smells or anti-patterns in this codebase?"
       - Query: "Where is business logic placed? In controllers or services?"
@@ -78,7 +86,7 @@ EXECUTION PLAN:
       - Locations where they occur
       - Impact assessment
 
-5.  **Identify Code Organization Patterns:**
+6.  **Identify Code Organization Patterns:**
     * Analyze directory structure:
       - How are features/modules organized?
       - How are layers separated?
@@ -88,7 +96,7 @@ EXECUTION PLAN:
       - File organization patterns
       - Module boundaries
 
-6.  **Identify Error Handling Patterns:**
+7.  **Identify Error Handling Patterns:**
     * Use `codebase_search`:
       - Query: "How are errors and exceptions handled consistently?"
     * Use `grep` to find error handling:
@@ -100,7 +108,7 @@ EXECUTION PLAN:
       - Exception types used
       - Error propagation patterns
 
-7.  **Identify Testing Patterns:**
+8.  **Identify Testing Patterns:**
     * Review test files (if available):
       - Test organization patterns
       - Test naming conventions
@@ -110,7 +118,7 @@ EXECUTION PLAN:
       - Testing patterns used
       - Test structure conventions
 
-8.  **Identify API Design Patterns:**
+9.  **Identify API Design Patterns:**
     * Review endpoint implementations:
       - Request/response patterns
       - Validation patterns
@@ -121,7 +129,7 @@ EXECUTION PLAN:
       - API design conventions
       - Common API patterns
 
-9.  **Identify Data Access Patterns:**
+10. **Identify Data Access Patterns:**
     * Use `codebase_search`:
       - Query: "How is data accessed? What patterns are used for database queries?"
     * Document:
@@ -131,13 +139,13 @@ EXECUTION PLAN:
 
 ## PART B: Dependency Analysis
 
-10. **Read Master File and Documentation:**
+11. **Read Master File and Documentation:**
     * Read `.cursor/onboarding-docs/CURSOR-ONBOARDING.md`.
     * Read `.cursor/onboarding-docs/ARCHITECTURE.md` (if exists).
     * Read `.cursor/onboarding-docs/INTEGRATIONS.md` (if exists).
     * Review core files analysis from `CURSOR-ONBOARDING.md`.
 
-11. **Analyze Component Dependencies:**
+12. **Analyze Component Dependencies:**
     * Use `codebase_search` to understand dependencies:
       - Query: "What are the dependencies between modules and components?"
       - Query: "How do services depend on each other?"
@@ -150,7 +158,7 @@ EXECUTION PLAN:
       - `package.json`, `requirements.txt`, `.csproj`, etc.
       - Extract external package dependencies
 
-12. **Map Service Dependencies:**
+13. **Map Service Dependencies:**
     * Identify service classes/interfaces.
     * Map service-to-service dependencies:
       - Which services depend on which other services
@@ -161,7 +169,7 @@ EXECUTION PLAN:
       - Dependency direction
       - Circular dependencies
 
-13. **Map Data Model Dependencies:**
+14. **Map Data Model Dependencies:**
     * Review data models from `.cursor/onboarding-docs/DATA_MODELS.md` (if exists).
     * Map entity relationships:
       - Foreign key relationships
@@ -171,7 +179,7 @@ EXECUTION PLAN:
       - Entity relationship graph
       - Data dependencies
 
-14. **Map Endpoint Dependencies:**
+15. **Map Endpoint Dependencies:**
     * Review endpoint documentation files (`CURSOR_*.md`).
     * Map endpoint dependencies:
       - Which endpoints call which services
@@ -182,7 +190,7 @@ EXECUTION PLAN:
       - Endpoint-to-model dependencies
       - Endpoint-to-external dependencies
 
-15. **Map External Dependencies:**
+16. **Map External Dependencies:**
     * Review integrations documentation.
     * Map external service dependencies:
       - Which components depend on which external APIs
@@ -194,7 +202,7 @@ EXECUTION PLAN:
 
 ## PART C: Generate Documentation
 
-16. **Generate Code Patterns Documentation:**
+17. **Generate Code Patterns Documentation:**
     * Create `.cursor/onboarding-docs/CODE_PATTERNS.md` with the following structure:
 
       ```markdown
@@ -315,7 +323,7 @@ EXECUTION PLAN:
       [Any additional observations about code patterns]
       ```
 
-17. **Generate Dependency Graph Documentation:**
+18. **Generate Dependency Graph Documentation:**
     * Create `.cursor/onboarding-docs/DEPENDENCY_GRAPH.md` with the following structure:
 
       ```markdown
@@ -480,7 +488,7 @@ EXECUTION PLAN:
       [Any additional observations about dependencies]
       ```
 
-18. **Generate Dependency Metadata File:**
+19. **Generate Dependency Metadata File:**
     * Create `.cursor/onboarding-docs/DEPENDENCY_METADATA.json` with structured dependency data:
       - Service dependencies (graph structure)
       - Module dependencies
@@ -488,7 +496,7 @@ EXECUTION PLAN:
       - Endpoint dependencies
       - Data model dependencies
 
-19. **Update Master File (Parallel-Safe):**
+20. **Update Master File (Parallel-Safe):**
     * Read `.cursor/onboarding-docs/CURSOR-ONBOARDING.md` again (to get the latest state from any parallel sessions).
     * **Update only if section is empty or marked as placeholder** - do not overwrite existing content from parallel sessions.
     * Find the `## Code Patterns & Conventions` section and update with:
@@ -513,7 +521,13 @@ EXECUTION PLAN:
       ```
     * Write the updated content to `.cursor/onboarding-docs/CURSOR-ONBOARDING.md`, preserving all other sections and content from parallel sessions.
 
-20. **Completion:**
+21. **Update Step Completion Status:**
+    * Read `.cursor/onboarding-docs/CURSOR-ONBOARDING.md` again to get the latest state.
+    * **Update the Step Completion Status section** to mark "Step 9 - Analyze Code Structure" as `[x]` (complete).
+    * If the Step Completion Status section doesn't exist, add it with Step 9 marked as complete.
+    * Write the updated content back to `.cursor/onboarding-docs/CURSOR-ONBOARDING.md`.
+
+22. **Completion:**
     * Report completion status:
       - Naming conventions identified
       - Common patterns identified

@@ -14,11 +14,19 @@ Generate a comprehensive quick reference index optimized for AI agent consumptio
 
 EXECUTION PLAN:
 
-0.  **Check for Initialization:**
+0.  **Mark Command as In Progress [P]:**
+    * Check if `.cursor/onboarding-docs/CURSOR-ONBOARDING.md` exists.
+    * **If it exists:** 
+        * Read it to get the current Step Completion Status.
+        * Update the Step Completion Status section to mark "Step 8 - Generate Quick Reference" as `[P]` (in progress).
+        * Write the updated content back to `.cursor/onboarding-docs/CURSOR-ONBOARDING.md`.
+    * **If it doesn't exist:** Report error and stop. User must run `/onboarding/initialize` first.
+
+1.  **Check for Initialization:**
     * Check if `.cursor/onboarding-docs/CURSOR-ONBOARDING.md` exists.
     * **If file doesn't exist:** Report error and stop. User must run `/onboarding/initialize` first.
 
-1.  **Read All Documentation Files:**
+2.  **Read All Documentation Files:**
     * Read `.cursor/onboarding-docs/CURSOR-ONBOARDING.md` to understand what has been analyzed.
     * Read all available documentation files:
       - `.cursor/onboarding-docs/ARCHITECTURE.md` (if exists)
@@ -34,7 +42,7 @@ EXECUTION PLAN:
       - `.cursor/onboarding-docs/PRODUCTION_READINESS.md` (if exists)
     * Use `glob_file_search` to find all endpoint documentation files: `CURSOR_*.md` in `.cursor/onboarding-docs/` directory.
 
-2.  **Extract Key Information:**
+3.  **Extract Key Information:**
     * From `CURSOR-ONBOARDING.md`:
       - Stack information
       - Core files list
@@ -72,7 +80,7 @@ EXECUTION PLAN:
       - Error response formats
       - Status code conventions
 
-3.  **Generate Quick Reference Index:**
+4.  **Generate Quick Reference Index:**
     * **CRITICAL:** When generating the "Checklist for Creating New Endpoints" section:
       - Extract actual file location patterns from `ARCHITECTURE.md` (e.g., where models, interfaces, services, repositories, controllers are located)
       - Extract validation patterns from `ARCHITECTURE.md` and `ERROR_HANDLING.md` (e.g., validator names, validation frameworks)
@@ -304,7 +312,7 @@ EXECUTION PLAN:
       ```
       ```
 
-4.  **Generate AI-Optimized Metadata File:**
+5.  **Generate AI-Optimized Metadata File:**
     * Create `.cursor/onboarding-docs/REFERENCE_METADATA.json` with structured metadata:
       - Endpoints with tags, handlers, dependencies
       - Entities with relationships
@@ -312,8 +320,8 @@ EXECUTION PLAN:
       - Files with purposes and tags
       - Cross-references between components
 
-5.  **Update Master File:**
-    * Read `.cursor/onboarding-docs/CURSOR-ONBOARDING.md` again.
+6.  **Update Master File:**
+    * Read `.cursor/onboarding-docs/CURSOR-ONBOARDING.md` again (to get the latest state from any parallel sessions).
     * Add a section:
       ```markdown
       ## Quick Reference
@@ -322,7 +330,13 @@ EXECUTION PLAN:
       ```
     * Write the updated content to `.cursor/onboarding-docs/CURSOR-ONBOARDING.md`.
 
-6.  **Completion:**
+7.  **Update Step Completion Status:**
+    * Read `.cursor/onboarding-docs/CURSOR-ONBOARDING.md` again to get the latest state.
+    * **Update the Step Completion Status section** to mark "Step 8 - Generate Quick Reference" as `[x]` (complete).
+    * If the Step Completion Status section doesn't exist, add it with Step 8 marked as complete.
+    * Write the updated content back to `.cursor/onboarding-docs/CURSOR-ONBOARDING.md`.
+
+8.  **Completion:**
     * Report that quick reference has been generated.
     * Note that this index is optimized for AI agent consumption and provides fast lookups for common queries.
 
