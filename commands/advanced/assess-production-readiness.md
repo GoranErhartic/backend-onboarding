@@ -14,23 +14,34 @@ Assess the project's production readiness by evaluating robustness, test coverag
 * If changes are staged and not applied, other parallel sessions will not see them and may overwrite work.
 * This step marks itself as `[P]` (in progress) at the start to prevent duplicate execution.
 
+**FAIL-FAST CHECK - MANDATORY:**
+* **BEFORE PROCEEDING:** Check if `.cursor/onboarding-docs/CURSOR-ONBOARDING.md` exists.
+* **If the file does NOT exist:**
+  * **STOP IMMEDIATELY** and report the following error message:
+    ```
+    ❌ ERROR: Onboarding initialization required
+    
+    The file `.cursor/onboarding-docs/CURSOR-ONBOARDING.md` was not found.
+    This file is created by the initialization command and is required for all analysis steps.
+    
+    Please run the initialization command first:
+    /onboarding/initialize
+    
+    This will set up the onboarding structure and perform initial project mapping.
+    ```
+  * **DO NOT proceed with any other steps.**
+* **If the file exists:** Continue with the execution plan below.
+
 EXECUTION PLAN:
 
 ## PART A: Initial Setup & Summary Checklist
 
 0.  **Mark Command as In Progress [P]:**
-    * Check if `.cursor/onboarding-docs/CURSOR-ONBOARDING.md` exists.
-    * **If it exists:** 
-        * Read it to get the current Step Completion Status.
-        * Update the Step Completion Status section to mark "Step 10 - Assess Production Readiness" as `[P]` (in progress).
-        * Write the updated content back to `.cursor/onboarding-docs/CURSOR-ONBOARDING.md`.
-    * **If it doesn't exist:** Report error and stop. User must run `/onboarding/initialize` first.
+    * Read `.cursor/onboarding-docs/CURSOR-ONBOARDING.md` to get the current Step Completion Status.
+    * Update the Step Completion Status section to mark "Step 10 - Assess Production Readiness" as `[P]` (in progress).
+    * Write the updated content back to `.cursor/onboarding-docs/CURSOR-ONBOARDING.md`.
 
-1.  **Check for Initialization:**
-    * Check if `.cursor/onboarding-docs/CURSOR-ONBOARDING.md` exists.
-    * **If file doesn't exist:** Report error and stop. User must run `/onboarding/initialize` first.
-
-2.  **Read Master File:**
+1.  **Read Master File:**
     * Read `.cursor/onboarding-docs/CURSOR-ONBOARDING.md`.
     * Review existing sections to understand what has been analyzed:
       - Stack Analysis
@@ -598,7 +609,7 @@ EXECUTION PLAN:
       ```markdown
       # Production Readiness Assessment
 
-      > **Assessment Date:** [Current Date/Time]
+      > **Assessment Date:** [Generate current date/time in human-readable format: YYYY-MM-DD HH:mm:ss UTC (e.g., 2024-12-19 14:30:00 UTC)]
       > **Project:** [Project Name]
       > **Overall Status:** [Ready/Partial/Not Ready]
 

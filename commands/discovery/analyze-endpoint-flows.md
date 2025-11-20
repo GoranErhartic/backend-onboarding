@@ -25,6 +25,24 @@ This prompt is parallel-safe and can be run multiple times or in parallel sessio
 - If a `[P]` task has a corresponding document file, it was completed but not marked - automatically recover it.
 - If a `[P]` task has no document file and no `[ ]` tasks remain, it's stuck - reclaim it.
 
+**FAIL-FAST CHECK - MANDATORY:**
+* **BEFORE PROCEEDING:** Check if `.cursor/onboarding-docs/CURSOR-ONBOARDING.md` exists.
+* **If the file does NOT exist:**
+  * **STOP IMMEDIATELY** and report the following error message:
+    ```
+    ❌ ERROR: Onboarding initialization required
+    
+    The file `.cursor/onboarding-docs/CURSOR-ONBOARDING.md` was not found.
+    This file is created by the initialization command and is required for all analysis steps.
+    
+    Please run the initialization command first:
+    /onboarding/initialize
+    
+    This will set up the onboarding structure and perform initial project mapping.
+    ```
+  * **DO NOT proceed with any other steps.**
+* **If the file exists:** Continue with the execution plan below.
+
 EXECUTION PLAN:
 
 **CRITICAL: MANDATORY RECURSIVE LOOP**
@@ -38,11 +56,7 @@ EXECUTION PLAN:
 * Initialize an empty list `session_completed_endpoints` to track endpoints completed in this session.
 * This list will be used only at the end to report what was accomplished.
 
-1.  **Check for Initialization:**
-    * Check if `.cursor/onboarding-docs/CURSOR-ONBOARDING.md` exists.
-    * **If file doesn't exist:** Report error and stop. User must run `/onboarding/initialize` first.
-
-2.  **Check for Endpoint Checklist:**
+1.  **Check for Endpoint Checklist:**
     * Read `.cursor/onboarding-docs/CURSOR-ONBOARDING.md`.
     * Find the `## Checklist: Endpoint Flow Investigation` section.
     * **If checklist doesn't exist or is empty:**

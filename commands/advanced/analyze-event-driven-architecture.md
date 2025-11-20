@@ -15,17 +15,32 @@ Analyze whether and how the project leverages event-driven patterns (publish/sub
 * If changes are staged and not applied, other parallel sessions will not see them and may overwrite work.
 * This step marks itself as `[P]` (in progress) at the start to prevent duplicate execution.
 
+**FAIL-FAST CHECK - MANDATORY:**
+* **BEFORE PROCEEDING:** Check if `.cursor/onboarding-docs/CURSOR-ONBOARDING.md` exists.
+* **If the file does NOT exist:**
+  * **STOP IMMEDIATELY** and report the following error message:
+    ```
+    ❌ ERROR: Onboarding initialization required
+    
+    The file `.cursor/onboarding-docs/CURSOR-ONBOARDING.md` was not found.
+    This file is created by the initialization command and is required for all analysis steps.
+    
+    Please run the initialization command first:
+    /onboarding/initialize
+    
+    This will set up the onboarding structure and perform initial project mapping.
+    ```
+  * **DO NOT proceed with any other steps.**
+* **If the file exists:** Continue with the execution plan below.
+
 EXECUTION PLAN:
 
 ## PART A: Pre-Checks & Gating
 
 0.  **Mark Command as In Progress [P]:**
-    * Check if `.cursor/onboarding-docs/CURSOR-ONBOARDING.md` exists.
-    * **If it exists:** 
-        * Read it to get the current Step Completion Status.
-        * Update the Step Completion Status section to mark "Step 11 - Analyze Event-Driven Architecture" as `[P]`.
-        * Write the updated content back to `.cursor/onboarding-docs/CURSOR-ONBOARDING.md`.
-    * **If it doesn't exist:** Report error and stop. User must run `/onboarding/initialize` first.
+    * Read `.cursor/onboarding-docs/CURSOR-ONBOARDING.md` to get the current Step Completion Status.
+    * Update the Step Completion Status section to mark "Step 11 - Analyze Event-Driven Architecture" as `[P]`.
+    * Write the updated content back to `.cursor/onboarding-docs/CURSOR-ONBOARDING.md`.
 
 1.  **Check Initialization Artifacts:**
     * Verify `.cursor/onboarding-docs/EVENT_DRIVEN_STATUS.json` exists.
@@ -41,7 +56,7 @@ EXECUTION PLAN:
         ```markdown
         # Event-Driven Architecture
 
-        > **Generated:** [Current Date/Time]
+        > **Generated:** [Generate current date/time in human-readable format: YYYY-MM-DD HH:mm:ss UTC (e.g., 2024-12-19 14:30:00 UTC)]
         > Initialization did not find evidence of pub/sub messaging.
 
         No further analysis required. If this is unexpected, rerun `/onboarding/initialize`.
@@ -135,7 +150,7 @@ EXECUTION PLAN:
       ```markdown
       # Event-Driven Architecture
 
-      > **Generated:** [Current Date/Time]
+      > **Generated:** [Generate current date/time in human-readable format: YYYY-MM-DD HH:mm:ss UTC (e.g., 2024-12-19 14:30:00 UTC)]
       > **Source:** /onboarding/analyze-event-driven-architecture
 
       ## Detection Summary
@@ -144,12 +159,12 @@ EXECUTION PLAN:
 
       ## Brokers & Infrastructure
       | Broker | Deployment | Purpose | Notes |
-      |--------|------------|---------|-------|
+      |:-------|:-----------|:--------|:------|
       | Kafka | terraform/brokers.tf | Streaming | SASL auth |
 
       ## Topics & Queues
       | Name | Type | Producers | Consumers | DLQ | Notes |
-      |------|------|-----------|-----------|-----|-------|
+      |:------|:------|:-----------|:-----------|:-----|:------|
       | orders.created | topic | OrderService | BillingService | orders.dlq | At-least-once |
 
       ## Publishers
@@ -189,7 +204,7 @@ EXECUTION PLAN:
         "topics": ["orders.created", "billing.failed"],
         "notes": "Short synopsis of findings",
         "lastAnalyzedBy": "/onboarding/analyze-event-driven-architecture",
-        "lastUpdated": "[ISO timestamp]"
+        "lastUpdated": "[Generate current date/time in human-readable format: YYYY-MM-DD HH:mm:ss UTC (e.g., 2024-12-19 14:30:00 UTC)]"
       }
       ```
 
