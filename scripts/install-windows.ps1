@@ -28,7 +28,8 @@ $Files = @(
     "commands\analysis\analyze-domain-and-performance.md",
     "commands\advanced\generate-quick-reference.md",
     "commands\advanced\analyze-code-structure.md",
-    "commands\advanced\assess-production-readiness.md"
+    "commands\advanced\assess-production-readiness.md",
+    "commands\advanced\analyze-event-driven-architecture.md"
 )
 
 # Copy each file
