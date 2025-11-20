@@ -12,21 +12,32 @@ Generate a comprehensive quick reference index optimized for AI agent consumptio
 * All file writes MUST be written directly to disk using file write tools (not staged/suggested edits).
 * When updating `.cursor/onboarding-docs/CURSOR-ONBOARDING.md`, ALWAYS re-read the file first to get the latest state from any parallel sessions.
 
+**FAIL-FAST CHECK - MANDATORY:**
+* **BEFORE PROCEEDING:** Check if `.cursor/onboarding-docs/CURSOR-ONBOARDING.md` exists.
+* **If the file does NOT exist:**
+  * **STOP IMMEDIATELY** and report the following error message:
+    ```
+    ❌ ERROR: Onboarding initialization required
+    
+    The file `.cursor/onboarding-docs/CURSOR-ONBOARDING.md` was not found.
+    This file is created by the initialization command and is required for all analysis steps.
+    
+    Please run the initialization command first:
+    /onboarding/initialize
+    
+    This will set up the onboarding structure and perform initial project mapping.
+    ```
+  * **DO NOT proceed with any other steps.**
+* **If the file exists:** Continue with the execution plan below.
+
 EXECUTION PLAN:
 
 0.  **Mark Command as In Progress [P]:**
-    * Check if `.cursor/onboarding-docs/CURSOR-ONBOARDING.md` exists.
-    * **If it exists:** 
-        * Read it to get the current Step Completion Status.
-        * Update the Step Completion Status section to mark "Step 8 - Generate Quick Reference" as `[P]` (in progress).
-        * Write the updated content back to `.cursor/onboarding-docs/CURSOR-ONBOARDING.md`.
-    * **If it doesn't exist:** Report error and stop. User must run `/onboarding/initialize` first.
+    * Read `.cursor/onboarding-docs/CURSOR-ONBOARDING.md` to get the current Step Completion Status.
+    * Update the Step Completion Status section to mark "Step 8 - Generate Quick Reference" as `[P]` (in progress).
+    * Write the updated content back to `.cursor/onboarding-docs/CURSOR-ONBOARDING.md`.
 
-1.  **Check for Initialization:**
-    * Check if `.cursor/onboarding-docs/CURSOR-ONBOARDING.md` exists.
-    * **If file doesn't exist:** Report error and stop. User must run `/onboarding/initialize` first.
-
-2.  **Read All Documentation Files:**
+1.  **Read All Documentation Files:**
     * Read `.cursor/onboarding-docs/CURSOR-ONBOARDING.md` to understand what has been analyzed.
     * Read all available documentation files:
       - `.cursor/onboarding-docs/ARCHITECTURE.md` (if exists)
@@ -40,6 +51,8 @@ EXECUTION PLAN:
       - `.cursor/onboarding-docs/API_CONTRACTS.md` (if exists)
       - `.cursor/onboarding-docs/PERFORMANCE.md` (if exists)
       - `.cursor/onboarding-docs/PRODUCTION_READINESS.md` (if exists)
+      - `.cursor/onboarding-docs/EVENT_DRIVEN.md` (if exists)
+      - `.cursor/onboarding-docs/EVENT_DRIVEN_STATUS.json` (if exists)
     * Use `glob_file_search` to find all endpoint documentation files: `CURSOR_*.md` in `.cursor/onboarding-docs/` directory.
 
 3.  **Extract Key Information:**
@@ -79,6 +92,14 @@ EXECUTION PLAN:
       - Exception types and patterns
       - Error response formats
       - Status code conventions
+    * From event-driven architecture documentation:
+      - Brokers and messaging infrastructure (Kafka, RabbitMQ, SQS, etc.)
+      - Topics, queues, and streams
+      - Publishers and their events
+      - Subscribers/handlers and their processing logic
+      - Event schemas and versioning
+      - Reliability patterns (exactly-once, at-least-once, DLQ)
+      - Monitoring and observability for messaging
 
 4.  **Generate Quick Reference Index:**
     * **CRITICAL:** When generating the "Checklist for Creating New Endpoints" section:
@@ -92,7 +113,7 @@ EXECUTION PLAN:
       ```markdown
       # Quick Reference Index
       
-      > **Generated:** [Current Date/Time]
+      > **Generated:** [Generate current date/time in human-readable format: YYYY-MM-DD HH:mm:ss UTC (e.g., 2024-12-19 14:30:00 UTC)]
       > **Purpose:** AI-optimized quick lookup index for codebase analysis
       
       ## Stack Summary
@@ -192,10 +213,10 @@ EXECUTION PLAN:
         - Location: [file path]
       
       ### Relationships Map
-      ```
+      
       [Entity1] --1:N--> [Entity2]
       [Entity2] --N:1--> [Entity3]
-      ```
+      
       
       ## Architecture Patterns
       
@@ -221,6 +242,31 @@ EXECUTION PLAN:
       
       ### Third-Party Services
       - **[Service Name]** - [purpose, configuration location]
+      
+      ## Event-Driven Architecture Index
+      
+      ### Messaging Infrastructure
+      - **Brokers:** [list brokers: Kafka, RabbitMQ, SQS, etc.]
+      - **Deployment:** [location/config]
+      
+      ### Topics & Queues
+      | Name | Type | Producers | Consumers | DLQ | Notes |
+      |------|------|-----------|-----------|-----|-------|
+      | [topic/queue] | [topic/queue] | [components] | [handlers] | [DLQ name] | [notes] |
+      
+      ### Publishers
+      - **[Component Name]** - [events published, trigger scenarios]
+      
+      ### Subscribers/Handlers
+      - **[Handler Name]** - [source topic/queue, processing logic, idempotency strategy]
+      
+      ### Event Schemas
+      - **[Schema Name]** - [format, versioning, compatibility notes]
+      
+      ### Reliability Patterns
+      - Delivery semantics: [exactly-once/at-least-once]
+      - Retry policies: [configuration]
+      - Dead-letter queues: [DLQ names and purposes]
       
       ## Domain Concepts
       
@@ -266,6 +312,13 @@ EXECUTION PLAN:
       - Search for: "repository" or "data access" or "database queries"
       - Look in: [directories]
       
+      ### Finding Event-Driven Components
+      - Search for: "event publisher" or "message broker" or "pub/sub" or "[broker name]"
+      - Look in: [directories]
+      - Topics/Queues: [list topic/queue names]
+      - Publishers: [list publisher components]
+      - Subscribers: [list subscriber/handler components]
+      
       ## Documentation Files Reference
       
       - **Architecture:** `.cursor/onboarding-docs/ARCHITECTURE.md`
@@ -279,6 +332,7 @@ EXECUTION PLAN:
       - **API Contracts:** `.cursor/onboarding-docs/API_CONTRACTS.md`
       - **Performance:** `.cursor/onboarding-docs/PERFORMANCE.md`
       - **Production Readiness:** `.cursor/onboarding-docs/PRODUCTION_READINESS.md`
+      - **Event-Driven Architecture:** `.cursor/onboarding-docs/EVENT_DRIVEN.md` (if event-driven patterns detected)
       - **Endpoint Templates:** `.cursor/onboarding-docs/CURSOR_*.md` (individual endpoint docs - **USE AS TEMPLATES FOR NEW ENDPOINTS**)
       
       ## Metadata Index (JSON)
@@ -307,7 +361,34 @@ EXECUTION PLAN:
             "file": "[file path]",
             "responsibilities": ["resp1", "resp2"]
           }
-        ]
+        ],
+        "eventDriven": {
+          "detected": true/false,
+          "brokers": ["broker1", "broker2"],
+          "topics": [
+            {
+              "name": "[topic/queue name]",
+              "type": "[topic/queue]",
+              "producers": ["component1"],
+              "consumers": ["handler1"],
+              "dlq": "[DLQ name if exists]"
+            }
+          ],
+          "publishers": [
+            {
+              "component": "[component name]",
+              "events": ["event1", "event2"],
+              "trigger": "[trigger scenario]"
+            }
+          ],
+          "subscribers": [
+            {
+              "handler": "[handler name]",
+              "source": "[topic/queue]",
+              "idempotency": "[strategy]"
+            }
+          ]
+        }
       }
       ```
       ```
@@ -319,6 +400,12 @@ EXECUTION PLAN:
       - Services with responsibilities
       - Files with purposes and tags
       - Cross-references between components
+      - Event-driven architecture data (if EVENT_DRIVEN.md exists):
+        - Brokers and infrastructure
+        - Topics/queues with producers and consumers
+        - Publishers and their events
+        - Subscribers/handlers with processing details
+        - Event schemas and reliability patterns
 
 6.  **Update Master File:**
     * Read `.cursor/onboarding-docs/CURSOR-ONBOARDING.md` again (to get the latest state from any parallel sessions).

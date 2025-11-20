@@ -64,6 +64,10 @@ After initialization, you can run these steps **in any order**, **independently*
 - `/onboarding/generate-quick-reference` - Create AI-optimized reference index
 - `/onboarding/analyze-code-structure` - Code patterns and dependencies
 
+### Conditional Step
+
+- `/onboarding/analyze-event-driven-architecture` - Deep dive into pub/sub messaging (only when `/onboarding/initialize` detects event-driven usage)
+
 ### Optional Step
 
 - `/onboarding/assess-production-readiness` (OPTIONAL) - Production readiness assessment
@@ -83,10 +87,11 @@ initialize (should run first)
         analyze-domain-and-performance
         generate-quick-reference
         analyze-code-structure
+        analyze-event-driven-architecture (conditional)
         assess-production-readiness (optional)
 ```
 
-**Note:** `/onboarding/initialize` should be run first. After that, all steps can run independently or in parallel in any order. Only `assess-production-readiness` is optional.
+**Note:** `/onboarding/initialize` should be run first. After that, all steps can run independently or in parallel in any order. `analyze-event-driven-architecture` runs only when initialization flags pub/sub usage. Only `assess-production-readiness` is optional.
 
 ## Time Estimates
 
@@ -101,9 +106,10 @@ initialize (should run first)
 1. **Initialize first**: Run `/onboarding/initialize` first - after that, run steps in any order
 2. **Parallel Execution**: Run multiple steps simultaneously in different chat sessions for faster completion
 3. **analyze-endpoint-flows**: Can be interrupted and resumed - it will automatically recover progress
-4. **Optional step**: Only run `assess-production-readiness` if you need production readiness assessment
-5. **Check Progress**: Review `.cursor/onboarding-docs/CURSOR-ONBOARDING.md` to see what's been completed
-6. **Endpoint Templates**: Before creating new endpoints, check for existing `CURSOR_{METHOD}_*.md` template files in `.cursor/onboarding-docs/` - these provide complete implementation patterns and should be used as guides
+4. **Event-driven step**: If `CURSOR-ONBOARDING.md` shows **Detected: Yes** under Event-Driven Architecture, run `/onboarding/analyze-event-driven-architecture` before touching messaging code
+5. **Optional step**: Only run `assess-production-readiness` if you need production readiness assessment
+6. **Check Progress**: Review `.cursor/onboarding-docs/CURSOR-ONBOARDING.md` to see what's been completed
+7. **Endpoint Templates**: Before creating new endpoints, check for existing `CURSOR_{METHOD}_*.md` template files in `.cursor/onboarding-docs/` - these provide complete implementation patterns and should be used as guides
 
 ## Need Help?
 

@@ -13,23 +13,34 @@ Analyze the codebase to identify common patterns, anti-patterns, code convention
 * All file writes MUST be written directly to disk using file write tools (not staged/suggested edits).
 * When updating `.cursor/onboarding-docs/CURSOR-ONBOARDING.md`, ALWAYS re-read the file first to get the latest state from any parallel sessions.
 
+**FAIL-FAST CHECK - MANDATORY:**
+* **BEFORE PROCEEDING:** Check if `.cursor/onboarding-docs/CURSOR-ONBOARDING.md` exists.
+* **If the file does NOT exist:**
+  * **STOP IMMEDIATELY** and report the following error message:
+    ```
+    ❌ ERROR: Onboarding initialization required
+    
+    The file `.cursor/onboarding-docs/CURSOR-ONBOARDING.md` was not found.
+    This file is created by the initialization command and is required for all analysis steps.
+    
+    Please run the initialization command first:
+    /onboarding/initialize
+    
+    This will set up the onboarding structure and perform initial project mapping.
+    ```
+  * **DO NOT proceed with any other steps.**
+* **If the file exists:** Continue with the execution plan below.
+
 EXECUTION PLAN:
 
 ## PART A: Code Patterns & Conventions
 
 0.  **Mark Command as In Progress [P]:**
-    * Check if `.cursor/onboarding-docs/CURSOR-ONBOARDING.md` exists.
-    * **If it exists:** 
-        * Read it to get the current Step Completion Status.
-        * Update the Step Completion Status section to mark "Step 9 - Analyze Code Structure" as `[P]` (in progress).
-        * Write the updated content back to `.cursor/onboarding-docs/CURSOR-ONBOARDING.md`.
-    * **If it doesn't exist:** Report error and stop. User must run `/onboarding/initialize` first.
+    * Read `.cursor/onboarding-docs/CURSOR-ONBOARDING.md` to get the current Step Completion Status.
+    * Update the Step Completion Status section to mark "Step 9 - Analyze Code Structure" as `[P]` (in progress).
+    * Write the updated content back to `.cursor/onboarding-docs/CURSOR-ONBOARDING.md`.
 
-1.  **Check for Initialization:**
-    * Check if `.cursor/onboarding-docs/CURSOR-ONBOARDING.md` exists.
-    * **If file doesn't exist:** Report error and stop. User must run `/onboarding/initialize` first.
-
-2.  **Read Master File:**
+1.  **Read Master File:**
     * Read `.cursor/onboarding-docs/CURSOR-ONBOARDING.md`.
     * Review stack analysis and architecture documentation to understand the project structure.
 
@@ -208,7 +219,7 @@ EXECUTION PLAN:
       ```markdown
       # Code Patterns & Conventions
       
-      > **Generated:** [Current Date/Time]
+      > **Generated:** [Generate current date/time in human-readable format: YYYY-MM-DD HH:mm:ss UTC (e.g., 2024-12-19 14:30:00 UTC)]
       > **Purpose:** Document common patterns, conventions, and anti-patterns for AI agent reference
       
       ## Naming Conventions
@@ -329,7 +340,7 @@ EXECUTION PLAN:
       ```markdown
       # Dependency Graph
       
-      > **Generated:** [Current Date/Time]
+      > **Generated:** [Generate current date/time in human-readable format: YYYY-MM-DD HH:mm:ss UTC (e.g., 2024-12-19 14:30:00 UTC)]
       > **Purpose:** Visual representation of component dependencies for AI agent reference
       
       ## Overview
