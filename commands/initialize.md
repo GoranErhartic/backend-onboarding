@@ -59,6 +59,33 @@ EXECUTION PLAN:
       - Build system (MSBuild, npm, Maven, etc.)
       - Runtime requirements (.NET version, Node version, Python version, etc.)
 
+3a. **Detect Event-Driven Architecture Usage:**
+    * Determine whether the project leverages an event-driven/pub-sub model before later steps run:
+      - Use `codebase_search` queries such as:
+        - "Where are events published or emitted?"
+        - "What message brokers or queues are used?"
+        - "How are topics, queues, or streams defined?"
+      - Use `grep` to scan for messaging keywords:
+        - `Publish|Subscribe|EventBus|EventEmitter|emit\(|on\(|topic|queue|Kafka|RabbitMQ|SQS|SNS|PubSub|NATS|EventBridge|Azure Service Bus`
+      - Review configuration files (`docker-compose`, infrastructure IaC, etc.) for broker references.
+    * **If clear signals exist:**
+      - Set `detected` to `true`.
+      - Capture supporting evidence (file paths, services, broker names).
+    * **If no signals were found:** set `detected` to `false`.
+    * Write `.cursor/onboarding-docs/EVENT_DRIVEN_STATUS.json`:
+      ```json
+      {
+        "detected": true|false,
+        "evidence": ["path or identifier", "..."],
+        "notes": "Short summary (e.g., 'Kafka producer in infra/kafka.ts')"
+      }
+      ```
+      - Replace placeholders with actual findings (use empty list/string when unknown).
+    * Update `.cursor/onboarding-docs/CURSOR-ONBOARDING.md` `## Event-Driven Architecture` section (created below) with:
+      - **Detected:** Yes/No
+      - **Signals:** brief comma-separated hints
+      - **Next Step:** instruct to run `/onboarding/analyze-event-driven-architecture` if detected.
+
 4.  **Identify Critical Files:**
     * Based on the stack analysis, identify 10-15 critical files to analyze:
       - Entry points: `Program.cs`, `Startup.cs`, `main.py`, `app.js`, `index.js`, `main.go`, etc.
@@ -102,6 +129,7 @@ EXECUTION PLAN:
       * [ ] Step 8 - Generate Quick Reference
       * [ ] Step 9 - Analyze Code Structure
       * [ ] Step 10 - Assess Production Readiness (Optional)
+      * [ ] Step 11 - Analyze Event-Driven Architecture
       
       ## Stack Analysis
       [Insert detailed stack analysis here, including:
@@ -139,6 +167,12 @@ EXECUTION PLAN:
       
       ## Key Project Files
       *(This section will be populated by analysis steps)*
+      
+      ## Event-Driven Architecture
+      *(Populated by initialization)*
+      - **Detected:** [Yes/No]
+      - **Signals:** [Comma-separated cues or "None"]
+      - **Next Step:** [e.g., "Run /onboarding/analyze-event-driven-architecture" or "Not required"]
       
       ## Application Endpoints
       *(This section will be populated by analysis steps)*
@@ -187,6 +221,8 @@ EXECUTION PLAN:
     * Verify that `.cursor/onboarding-docs/` directory exists.
     * Verify that `.cursor/onboarding-docs/CURSOR-ONBOARDING.md` exists with the required structure and populated sections.
     * Verify that `.cursor/onboarding-docs/PROJECT_MAP.txt` exists and contains the file tree mapping.
+    * Verify that `.cursor/onboarding-docs/EVENT_DRIVEN_STATUS.json` exists with the detection result.
+    * Verify that the `## Event-Driven Architecture` section in `CURSOR-ONBOARDING.md` reflects the detection data.
     * Verify that the Step Completion Status section exists and shows Initialize Onboarding as complete.
     * Verify that at least some checklist items were added (if none found, note this as a warning).
     * Report the number of files mapped, stack identified, core files identified, and endpoint discovery locations identified.
@@ -197,6 +233,7 @@ EXECUTION PLAN:
       - Stack identified
       - Number of core files identified for analysis
       - Number of endpoint discovery locations identified
+      - Event-driven architecture detected: Yes/No (include summary signals)
     * Report that initialization and mapping is complete.
     * **Read `.cursor/onboarding-docs/CURSOR-ONBOARDING.md` to check Step Completion Status.**
     * **Report which steps are still pending (not run):**
@@ -212,6 +249,7 @@ EXECUTION PLAN:
         - If "Step 8 - Generate Quick Reference" is `[ ]`: `/onboarding/generate-quick-reference`
         - If "Step 9 - Analyze Code Structure" is `[ ]`: `/onboarding/analyze-code-structure`
         - If "Step 10 - Assess Production Readiness (Optional)" is `[ ]`: `/onboarding/assess-production-readiness`
+      - If "Step 11 - Analyze Event-Driven Architecture" is `[ ]`: `/onboarding/analyze-event-driven-architecture`
       - Format: "**Pending steps:** [list of command names]"
       - If all steps are complete or in progress, report: "All steps are complete or currently running."
     * Inform the user that they can now run any analysis step independently.

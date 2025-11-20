@@ -24,6 +24,8 @@ your-project/
 │   ├── QUICK_REFERENCE.md           # Quick reference
 │   ├── CODE_PATTERNS.md             # Code patterns
 │   ├── DEPENDENCY_GRAPH.md          # Dependencies
+│   ├── EVENT_DRIVEN.md              # Event-driven architecture (conditional)
+│   ├── EVENT_DRIVEN_STATUS.json     # Messaging detection metadata
 │   ├── PRODUCTION_READINESS.md      # Production assessment (optional)
 │   └── CURSOR_GET_api_users.md      # Endpoint docs
 │   └── ...                          # More endpoint docs
@@ -48,6 +50,7 @@ your-project/
 # Session 7: Additional steps
 /onboarding/generate-quick-reference
 /onboarding/analyze-code-structure
+/onboarding/analyze-event-driven-architecture (conditional)
 /onboarding/assess-production-readiness (optional)
 ```
 

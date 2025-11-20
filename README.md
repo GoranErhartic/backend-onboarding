@@ -14,7 +14,8 @@ The Cursor Onboarding Suite provides a structured approach to understanding any 
 
 - **1 First Step** - `/onboarding/initialize` should be run first to set up the foundation
 - **8 Core Steps** - Analysis steps that can run in any order
-- **1 Optional Step** - Advanced analysis for deeper insights
+- **1 Conditional Step** - Event-driven deep dive that runs when pub/sub is detected
+- **1 Optional Step** - Production readiness assessment for deeper insights
 
 **Important:** `/onboarding/initialize` should be run first. After that, all other steps can run independently or in parallel in any order. All steps are designed to run independently and can be parallelized across multiple chat sessions for faster completion.
 
@@ -43,7 +44,8 @@ cursor-onboarding-suite/
 │   └── advanced/               # Optional advanced analysis
 │       ├── generate-quick-reference.md
 │       ├── analyze-code-structure.md
-│       └── assess-production-readiness.md
+│       ├── assess-production-readiness.md
+│       └── analyze-event-driven-architecture.md
 │
 ├── scripts/                    # Installation scripts
 │   ├── install-mac.sh
@@ -73,6 +75,7 @@ initialize (should run first)
         analyze-domain-and-performance
         generate-quick-reference
         analyze-code-structure
+        analyze-event-driven-architecture (conditional)
         assess-production-readiness (optional)
 ```
 
@@ -171,9 +174,15 @@ After `/onboarding/initialize`, you can run these steps **in any order**, **inde
    - Code patterns, conventions, and anti-patterns
    - Component dependencies and relationships
 
+### Conditional Step
+
+10. **`/onboarding/analyze-event-driven-architecture`** - Analyze Event-Driven Architecture (Conditional)
+    - Runs when initialization detects pub/sub usage
+    - Documents brokers, topics/queues, publishers/subscribers, and observability
+
 ### Optional Step
 
-10. **`/onboarding/assess-production-readiness`** - Assess Production Readiness (OPTIONAL)
+11. **`/onboarding/assess-production-readiness`** - Assess Production Readiness (OPTIONAL)
     - Comprehensive production readiness evaluation
     - Security, monitoring, scalability assessment
 
@@ -188,6 +197,7 @@ After `/onboarding/initialize`, you can run these steps **in any order**, **inde
 - **analyze-domain-and-performance**: `.cursor/onboarding-docs/DOMAIN.md`, `.cursor/onboarding-docs/API_CONTRACTS.md`, `.cursor/onboarding-docs/PERFORMANCE.md`
 - **generate-quick-reference**: `.cursor/onboarding-docs/QUICK_REFERENCE.md`, `.cursor/onboarding-docs/REFERENCE_METADATA.json`
 - **analyze-code-structure**: `.cursor/onboarding-docs/CODE_PATTERNS.md`, `.cursor/onboarding-docs/DEPENDENCY_GRAPH.md`, `.cursor/onboarding-docs/DEPENDENCY_METADATA.json`
+- **analyze-event-driven-architecture** (conditional): `.cursor/onboarding-docs/EVENT_DRIVEN.md`, `.cursor/onboarding-docs/EVENT_DRIVEN_STATUS.json`
 - **assess-production-readiness** (optional): `.cursor/onboarding-docs/PRODUCTION_READINESS.md`
 
 ## 💡 Best Practices
@@ -198,7 +208,8 @@ After `/onboarding/initialize`, you can run these steps **in any order**, **inde
 4. **analyze-endpoint-flows**: Can be interrupted and resumed - it automatically recovers progress
 5. **Clean context**: Start a new chat for each step to avoid context window issues
 6. **Review progress**: Check `.cursor/onboarding-docs/CURSOR-ONBOARDING.md` to see what's been completed
-7. **Optional step**: Only run `assess-production-readiness` if you need production readiness assessment
+7. **Event-driven readiness**: If initialization marks event-driven usage, run `/onboarding/analyze-event-driven-architecture` before touching messaging code
+8. **Optional step**: Only run `assess-production-readiness` if you need production readiness assessment
 
 ## 🔧 Troubleshooting
 

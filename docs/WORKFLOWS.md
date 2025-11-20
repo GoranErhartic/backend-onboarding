@@ -25,6 +25,7 @@ For comprehensive codebase understanding:
    - `/onboarding/analyze-config-and-testing`
    - `/onboarding/analyze-integrations`
    - `/onboarding/analyze-domain-and-performance`
+4. If initialization detected **Event-Driven Architecture**, run `/onboarding/analyze-event-driven-architecture` once infrastructure/contract files are identified.
 
 **Time:** ~30-60 minutes  
 **Output:** Complete understanding of architecture, configuration, integrations, and domain
@@ -37,6 +38,7 @@ For complete documentation and AI optimization:
 2. Run additional steps:
    - `/onboarding/generate-quick-reference` - Create quick reference index
    - `/onboarding/analyze-code-structure` - Code patterns and dependencies
+   - `/onboarding/analyze-event-driven-architecture` (conditional) - Messaging deep dive
    - `/onboarding/assess-production-readiness` (optional) - Production readiness assessment
 
 **Time:** ~60-90 minutes  
@@ -65,6 +67,9 @@ For fastest completion:
 **Session 6 (parallel with Session 2):**
 - `/onboarding/analyze-domain-and-performance`
 
+**Session 7 (after initialization reports Detected: Yes):**
+- `/onboarding/analyze-event-driven-architecture`
+
 **Time:** ~20-40 minutes (depending on parallelization)
 
 ## Focused Analysis Workflows
@@ -84,6 +89,12 @@ For fastest completion:
 ### Production-Ready Assessment
 1. Complete Standard Analysis workflow
 2. `/onboarding/assess-production-readiness`
+
+### Event-Driven Systems
+1. `/onboarding/initialize`
+2. `/onboarding/analyze-core-and-endpoints`
+3. `/onboarding/analyze-integrations` (to catalog external services)
+4. `/onboarding/analyze-event-driven-architecture`
 
 ## Tips for Large Projects
 

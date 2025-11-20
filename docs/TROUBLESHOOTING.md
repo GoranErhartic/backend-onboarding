@@ -63,6 +63,15 @@ Common issues and solutions when using the Cursor Onboarding Suite.
 3. Verify the framework detection is correct
 4. Manually add endpoint locations to the checklist in `CURSOR-ONBOARDING.md`
 
+## Event-Driven Command Skips Immediately
+
+**Problem:** `/onboarding/analyze-event-driven-architecture` exits with a message saying event-driven architecture was not detected.
+
+**Solutions:**
+1. Ensure `/onboarding/initialize` ran after messaging components were added; rerun it if necessary so detection picks up brokers/topics.
+2. Check `.cursor/onboarding-docs/EVENT_DRIVEN_STATUS.json` for `detected: false`. Update your configuration so evidence (publish/subscribe code, broker configs) is committed, then rerun initialization.
+3. If your project truly has no pub/sub, this skip is expected—no further action required.
+
 ## Context Window Issues
 
 **Problem:** Steps fail due to context window limits.
